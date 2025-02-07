@@ -75,7 +75,7 @@ _data = {
 radius = 4.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_clhk8"]
-radius = 25.0
+radius = 30.0
 
 [node name="Exit" type="Area2D" node_paths=PackedStringArray("contact_areas")]
 collision_layer = 32
@@ -84,6 +84,7 @@ script = ExtResource("2_db8g4")
 contact_areas = [NodePath("TopArea"), NodePath("BottomArea"), NodePath("LeftArea"), NodePath("RightArea")]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(1.2, 1.2)
 texture = ExtResource("2_qtsfb")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -96,7 +97,7 @@ collision_layer = 32
 collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TopArea"]
-position = Vector2(0, -18)
+position = Vector2(0, -26)
 shape = SubResource("CircleShape2D_3bk6x")
 debug_color = Color(0.512536, 0.422116, 1, 0.42)
 
@@ -105,7 +106,7 @@ collision_layer = 32
 collision_mask = 8
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="BottomArea"]
-position = Vector2(0, 17)
+position = Vector2(0, 26)
 shape = SubResource("CircleShape2D_3bk6x")
 debug_color = Color(0.513726, 0.423529, 1, 0.419608)
 
@@ -114,7 +115,7 @@ collision_layer = 32
 collision_mask = 8
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="LeftArea"]
-position = Vector2(-18, 0)
+position = Vector2(-25, 0)
 shape = SubResource("CircleShape2D_3bk6x")
 debug_color = Color(0.513726, 0.423529, 1, 0.419608)
 
@@ -123,7 +124,7 @@ collision_layer = 32
 collision_mask = 8
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="RightArea"]
-position = Vector2(18, 0)
+position = Vector2(25, 0)
 shape = SubResource("CircleShape2D_3bk6x")
 debug_color = Color(0.513726, 0.423529, 1, 0.419608)
 

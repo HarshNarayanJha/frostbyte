@@ -2,7 +2,7 @@ class_name Player extends CharacterBody2D
 
 const SPEED = 300.0
 const ACCELERATION = 200.0
-const DECELERATION = 50.0
+const DECELERATION = 100.0
 
 const GRAVITY_CONSTANT := 2000000.0
 

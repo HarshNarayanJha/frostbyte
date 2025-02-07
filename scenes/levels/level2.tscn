@@ -1,0 +1,105 @@
+[gd_scene load_steps=13 format=3 uid="uid://duy1ur0p0hhb"]
+
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="1_hmd5o"]
+[ext_resource type="PackedScene" uid="uid://xv0mt0yr3up8" path="res://scenes/utils/bg.tscn" id="2_f7w8w"]
+[ext_resource type="PackedScene" uid="uid://c31scdtru5ow2" path="res://scenes/player/player.tscn" id="3_lyf8f"]
+[ext_resource type="PackedScene" uid="uid://cff620nk1se5i" path="res://scenes/utils/world_boundary.tscn" id="4_1lgho"]
+[ext_resource type="PackedScene" uid="uid://blidk8nuo4ieu" path="res://scenes/entities/exit.tscn" id="5_vp4le"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="6_pekyt"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="7_k5xcn"]
+[ext_resource type="PackedScene" uid="uid://uebox1c8mkfh" path="res://scenes/entities/snowflake.tscn" id="8_yg1ik"]
+[ext_resource type="Script" path="res://scripts/level_controller.gd" id="9_3aw1r"]
+[ext_resource type="PackedScene" uid="uid://36gpoloxcjs3" path="res://scenes/entities/darkplane.tscn" id="10_my8rw"]
+[ext_resource type="PackedScene" uid="uid://b16wesu5j1lck" path="res://scenes/entities/darkhole.tscn" id="11_de828"]
+
+[sub_resource type="Resource" id="Resource_1uo33"]
+script = ExtResource("7_k5xcn")
+duration = 1.0
+transition = 0
+ease = 2
+
+[node name="Level0" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="PhantomCameraHost" type="Node" parent="Camera2D"]
+process_priority = 300
+process_physics_priority = 300
+script = ExtResource("1_hmd5o")
+
+[node name="BG" parent="." instance=ExtResource("2_f7w8w")]
+
+[node name="Player" parent="." instance=ExtResource("3_lyf8f")]
+position = Vector2(485, 256)
+
+[node name="WorldBoundary" parent="." instance=ExtResource("4_1lgho")]
+
+[node name="Exit" parent="." instance=ExtResource("5_vp4le")]
+position = Vector2(-512, -256)
+
+[node name="PhantomCamera2D" type="Node2D" parent="."]
+script = ExtResource("6_pekyt")
+tween_resource = SubResource("Resource_1uo33")
+
+[node name="Snowflake" parent="." instance=ExtResource("8_yg1ik")]
+position = Vector2(104, -192)
+
+[node name="Snowflake2" parent="." instance=ExtResource("8_yg1ik")]
+position = Vector2(192, 96)
+
+[node name="Snowflake3" parent="." instance=ExtResource("8_yg1ik")]
+position = Vector2(-312, -192)
+
+[node name="Snowflake4" parent="." instance=ExtResource("8_yg1ik")]
+position = Vector2(-192, 280)
+
+[node name="LevelController" type="Node" parent="." node_paths=PackedStringArray("camera")]
+script = ExtResource("9_3aw1r")
+camera = NodePath("../PhantomCamera2D")
+
+[node name="Darkplane" parent="." instance=ExtResource("10_my8rw")]
+position = Vector2(192, -192)
+scale = Vector2(10, 10)
+offset = Vector2(0, 0)
+
+[node name="CollisionShape2D" parent="Darkplane/Area2D" index="0"]
+position = Vector2(0, 0)
+
+[node name="Darkplane2" parent="." instance=ExtResource("10_my8rw")]
+position = Vector2(-192, -192)
+scale = Vector2(10, 10)
+offset = Vector2(0, 0)
+rotation_speed = -0.25
+
+[node name="CollisionShape2D" parent="Darkplane2/Area2D" index="0"]
+position = Vector2(0, 0)
+
+[node name="Darkplane3" parent="." instance=ExtResource("10_my8rw")]
+position = Vector2(-192, 192)
+scale = Vector2(10, 10)
+offset = Vector2(0, 0)
+
+[node name="CollisionShape2D" parent="Darkplane3/Area2D" index="0"]
+position = Vector2(0, 0)
+
+[node name="Darkplane4" parent="." instance=ExtResource("10_my8rw")]
+position = Vector2(192, 192)
+scale = Vector2(10, 10)
+offset = Vector2(0, 0)
+rotation_speed = -0.25
+
+[node name="CollisionShape2D" parent="Darkplane4/Area2D" index="0"]
+position = Vector2(0, 0)
+
+[node name="Darkhole" parent="." instance=ExtResource("11_de828")]
+
+[node name="Snowflake5" parent="." instance=ExtResource("8_yg1ik")]
+position = Vector2(-88, 0)
+
+[node name="Snowflake6" parent="." instance=ExtResource("8_yg1ik")]
+position = Vector2(128, -40)
+
+[editable path="Darkplane"]
+[editable path="Darkplane2"]
+[editable path="Darkplane3"]
+[editable path="Darkplane4"]

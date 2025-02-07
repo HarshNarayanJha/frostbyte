@@ -33,7 +33,7 @@ position = Vector2(485, 256)
 [node name="WorldBoundary" parent="." instance=ExtResource("3_gcvjj")]
 
 [node name="Exit" parent="." instance=ExtResource("4_fl67h")]
-position = Vector2(-490, -272)
+position = Vector2(-512, -256)
 
 [node name="PhantomCamera2D" type="Node2D" parent="."]
 script = ExtResource("6_djk10")
@@ -52,13 +52,13 @@ position = Vector2(-168, 200)
 position = Vector2(-376, 104)
 
 [node name="Snowflake5" parent="." instance=ExtResource("5_3l6cb")]
-position = Vector2(-168, -32)
+position = Vector2(-222, -64)
 
 [node name="Snowflake6" parent="." instance=ExtResource("5_3l6cb")]
-position = Vector2(-16, -160)
+position = Vector2(-120, -216)
 
 [node name="Snowflake7" parent="." instance=ExtResource("5_3l6cb")]
-position = Vector2(-184, -248)
+position = Vector2(-280, -264)
 
 [node name="LevelController" type="Node" parent="." node_paths=PackedStringArray("camera")]
 script = ExtResource("9_p7w1p")

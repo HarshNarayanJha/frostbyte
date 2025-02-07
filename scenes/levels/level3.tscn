@@ -1,0 +1,85 @@
+[gd_scene load_steps=13 format=3 uid="uid://bqb6hnjydl6o8"]
+
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="1_gjge6"]
+[ext_resource type="PackedScene" uid="uid://xv0mt0yr3up8" path="res://scenes/utils/bg.tscn" id="2_rfl43"]
+[ext_resource type="PackedScene" uid="uid://c31scdtru5ow2" path="res://scenes/player/player.tscn" id="3_vtwv0"]
+[ext_resource type="PackedScene" uid="uid://cff620nk1se5i" path="res://scenes/utils/world_boundary.tscn" id="4_7jlrx"]
+[ext_resource type="PackedScene" uid="uid://blidk8nuo4ieu" path="res://scenes/entities/exit.tscn" id="5_m08sv"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="6_jr757"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="7_3to4f"]
+[ext_resource type="PackedScene" uid="uid://uebox1c8mkfh" path="res://scenes/entities/snowflake.tscn" id="8_tervn"]
+[ext_resource type="Script" path="res://scripts/level_controller.gd" id="9_rdq32"]
+[ext_resource type="PackedScene" uid="uid://36gpoloxcjs3" path="res://scenes/entities/darkplane.tscn" id="10_kh1yl"]
+[ext_resource type="PackedScene" uid="uid://wcwm1dfwfm73" path="res://scenes/entities/darkblaster.tscn" id="11_k2287"]
+
+[sub_resource type="Resource" id="Resource_1uo33"]
+script = ExtResource("7_3to4f")
+duration = 1.0
+transition = 0
+ease = 2
+
+[node name="Level0" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="PhantomCameraHost" type="Node" parent="Camera2D"]
+process_priority = 300
+process_physics_priority = 300
+script = ExtResource("1_gjge6")
+
+[node name="BG" parent="." instance=ExtResource("2_rfl43")]
+
+[node name="Player" parent="." instance=ExtResource("3_vtwv0")]
+position = Vector2(512, -256)
+
+[node name="WorldBoundary" parent="." instance=ExtResource("4_7jlrx")]
+
+[node name="Exit" parent="." instance=ExtResource("5_m08sv")]
+position = Vector2(-448, 192)
+
+[node name="PhantomCamera2D" type="Node2D" parent="."]
+script = ExtResource("6_jr757")
+tween_resource = SubResource("Resource_1uo33")
+
+[node name="Snowflake" parent="." instance=ExtResource("8_tervn")]
+position = Vector2(0, -200)
+
+[node name="Snowflake2" parent="." instance=ExtResource("8_tervn")]
+position = Vector2(520, 272)
+
+[node name="Snowflake3" parent="." instance=ExtResource("8_tervn")]
+position = Vector2(-520, -264)
+
+[node name="Snowflake4" parent="." instance=ExtResource("8_tervn")]
+position = Vector2(-320, 192)
+
+[node name="Snowflake5" parent="." instance=ExtResource("8_tervn")]
+position = Vector2(-448, 64)
+
+[node name="LevelController" type="Node" parent="." node_paths=PackedStringArray("camera")]
+script = ExtResource("9_rdq32")
+camera = NodePath("../PhantomCamera2D")
+
+[node name="Darkplane" parent="." instance=ExtResource("10_kh1yl")]
+position = Vector2(384, 128)
+scale = Vector2(15, 15)
+offset = Vector2(0, 0)
+rotation_speed = 0.5
+
+[node name="CollisionShape2D" parent="Darkplane/Area2D" index="0"]
+position = Vector2(0, 0)
+
+[node name="Darkplane2" parent="." instance=ExtResource("10_kh1yl")]
+position = Vector2(-384, -128)
+scale = Vector2(15, 15)
+offset = Vector2(0, 0)
+rotation_speed = -0.5
+
+[node name="CollisionShape2D" parent="Darkplane2/Area2D" index="0"]
+position = Vector2(0, 0)
+
+[node name="Darkblaster" parent="." instance=ExtResource("11_k2287")]
+position = Vector2(0, -326)
+
+[editable path="Darkplane"]
+[editable path="Darkplane2"]

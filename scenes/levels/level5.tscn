@@ -1,0 +1,112 @@
+[gd_scene load_steps=13 format=3 uid="uid://bof5bmorp3boi"]
+
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="1_7goy3"]
+[ext_resource type="PackedScene" uid="uid://xv0mt0yr3up8" path="res://scenes/utils/bg.tscn" id="2_2xk07"]
+[ext_resource type="PackedScene" uid="uid://c31scdtru5ow2" path="res://scenes/player/player.tscn" id="3_yl3hn"]
+[ext_resource type="PackedScene" uid="uid://cff620nk1se5i" path="res://scenes/utils/world_boundary.tscn" id="4_fvgwd"]
+[ext_resource type="PackedScene" uid="uid://blidk8nuo4ieu" path="res://scenes/entities/exit.tscn" id="5_vgoj7"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="6_xx3k1"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="7_s42mr"]
+[ext_resource type="PackedScene" uid="uid://uebox1c8mkfh" path="res://scenes/entities/snowflake.tscn" id="8_d68jr"]
+[ext_resource type="Script" path="res://scripts/level_controller.gd" id="9_r3eb4"]
+[ext_resource type="PackedScene" uid="uid://36gpoloxcjs3" path="res://scenes/entities/darkplane.tscn" id="10_7511b"]
+[ext_resource type="PackedScene" uid="uid://wcwm1dfwfm73" path="res://scenes/entities/darkblaster.tscn" id="11_wio5l"]
+
+[sub_resource type="Resource" id="Resource_1uo33"]
+script = ExtResource("7_s42mr")
+duration = 1.0
+transition = 0
+ease = 2
+
+[node name="Level0" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="PhantomCameraHost" type="Node" parent="Camera2D"]
+process_priority = 300
+process_physics_priority = 300
+script = ExtResource("1_7goy3")
+
+[node name="BG" parent="." instance=ExtResource("2_2xk07")]
+
+[node name="Player" parent="." instance=ExtResource("3_yl3hn")]
+position = Vector2(-440, -256)
+
+[node name="WorldBoundary" parent="." instance=ExtResource("4_fvgwd")]
+
+[node name="Exit" parent="." instance=ExtResource("5_vgoj7")]
+position = Vector2(448, 192)
+
+[node name="PhantomCamera2D" type="Node2D" parent="."]
+script = ExtResource("6_xx3k1")
+tween_resource = SubResource("Resource_1uo33")
+
+[node name="Snowflake" parent="." instance=ExtResource("8_d68jr")]
+position = Vector2(0, -200)
+
+[node name="Snowflake2" parent="." instance=ExtResource("8_d68jr")]
+position = Vector2(542, 0)
+
+[node name="Snowflake3" parent="." instance=ExtResource("8_d68jr")]
+position = Vector2(360, -96)
+
+[node name="Snowflake4" parent="." instance=ExtResource("8_d68jr")]
+position = Vector2(-352, 224)
+
+[node name="Snowflake5" parent="." instance=ExtResource("8_d68jr")]
+position = Vector2(-480, 96)
+
+[node name="LevelController" type="Node" parent="." node_paths=PackedStringArray("camera")]
+script = ExtResource("9_r3eb4")
+camera = NodePath("../PhantomCamera2D")
+
+[node name="Darkplane" parent="." instance=ExtResource("10_7511b")]
+position = Vector2(856, -3.05176e-05)
+rotation = 2.35619
+scale = Vector2(45, 45)
+offset = Vector2(0, 0)
+rotation_speed = 0.1
+
+[node name="CollisionShape2D" parent="Darkplane/Area2D" index="0"]
+position = Vector2(0, 0)
+
+[node name="Darkplane2" parent="." instance=ExtResource("10_7511b")]
+position = Vector2(-809, -3.63798e-12)
+rotation = 2.35619
+scale = Vector2(45, 45)
+offset = Vector2(0, 0)
+rotation_speed = -0.1
+
+[node name="CollisionShape2D" parent="Darkplane2/Area2D" index="0"]
+position = Vector2(0, 0)
+
+[node name="Darkblaster" parent="." instance=ExtResource("11_wio5l")]
+position = Vector2(0, -328)
+shoot_freq = 0.2
+
+[node name="Darkblaster2" parent="." instance=ExtResource("11_wio5l")]
+position = Vector2(320, -328)
+shoot_freq = 0.2
+
+[node name="Darkblaster3" parent="." instance=ExtResource("11_wio5l")]
+position = Vector2(-319.568, -325.358)
+shoot_freq = 0.2
+
+[node name="Darkblaster4" parent="." instance=ExtResource("11_wio5l")]
+position = Vector2(-192, 328)
+rotation = 3.14159
+shoot_freq = 0.2
+
+[node name="Darkblaster5" parent="." instance=ExtResource("11_wio5l")]
+position = Vector2(202, 326)
+rotation = 3.14159
+shoot_freq = 0.2
+
+[node name="Snowflake6" parent="." instance=ExtResource("8_d68jr")]
+position = Vector2(104, 136)
+
+[node name="Snowflake7" parent="." instance=ExtResource("8_d68jr")]
+position = Vector2(-176, -32)
+
+[editable path="Darkplane"]
+[editable path="Darkplane2"]
