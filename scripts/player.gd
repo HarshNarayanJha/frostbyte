@@ -9,6 +9,7 @@ const GRAVITY_CONSTANT := 1000000.0
 @onready var sprite_2d: Sprite2D = $Sprite2D
 
 @export var input: InputHandler
+@export var die_fx: PackedScene
 
 var dark_hole_pos: Vector2 = Vector2.ZERO
 var near_dark_hole: bool = false
@@ -40,6 +41,15 @@ func _physics_process(delta: float) -> void:
 		velocity = velocity.bounce(get_last_slide_collision().get_normal())
 
 func die() -> void:
+	input.disable_inputs()
+	velocity = Vector2.ZERO
+	sprite_2d.hide()
+
+	var fx: GPUParticles2D = die_fx.instantiate()
+	add_child(fx)
+	fx.emitting = true
+
+	await fx.finished
 	SceneManager.reload_scene({"pattern": "scribbles", "wait_time": 0.1, "speed": 5})
 
 func enter_field(position: Vector2) -> void:

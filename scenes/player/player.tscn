@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://c31scdtru5ow2"]
+[gd_scene load_steps=6 format=3 uid="uid://c31scdtru5ow2"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_h1jyl"]
 [ext_resource type="Texture2D" uid="uid://cmallnjoe0a2d" path="res://art/geometry/circle64.png" id="2_4s6k7"]
+[ext_resource type="PackedScene" uid="uid://cbc4clt1yrd13" path="res://scenes/player/player_die_fx.tscn" id="2_jbkqo"]
 [ext_resource type="Script" path="res://scripts/input_handler.gd" id="3_iduec"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bvlhk"]
@@ -13,6 +14,7 @@ collision_mask = 7
 motion_mode = 1
 script = ExtResource("1_h1jyl")
 input = NodePath("InputHandler")
+die_fx = ExtResource("2_jbkqo")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(0, 0, 0, 1)
