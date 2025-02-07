@@ -1,12 +1,29 @@
-[gd_scene load_steps=6 format=3 uid="uid://cnbr0c618knbl"]
+[gd_scene load_steps=11 format=3 uid="uid://cnbr0c618knbl"]
 
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="1_5l87d"]
 [ext_resource type="PackedScene" uid="uid://xv0mt0yr3up8" path="res://scenes/utils/bg.tscn" id="1_8w335"]
 [ext_resource type="PackedScene" uid="uid://c31scdtru5ow2" path="res://scenes/player/player.tscn" id="2_ce6ly"]
 [ext_resource type="PackedScene" uid="uid://cff620nk1se5i" path="res://scenes/utils/world_boundary.tscn" id="3_gcvjj"]
 [ext_resource type="PackedScene" uid="uid://blidk8nuo4ieu" path="res://scenes/entities/exit.tscn" id="4_fl67h"]
 [ext_resource type="PackedScene" uid="uid://uebox1c8mkfh" path="res://scenes/entities/snowflake.tscn" id="5_3l6cb"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="6_djk10"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="7_bl3k2"]
+[ext_resource type="Script" path="res://scripts/level_controller.gd" id="9_p7w1p"]
+
+[sub_resource type="Resource" id="Resource_1uo33"]
+script = ExtResource("7_bl3k2")
+duration = 1.0
+transition = 0
+ease = 2
 
 [node name="Level0" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="PhantomCameraHost" type="Node" parent="Camera2D"]
+process_priority = 300
+process_physics_priority = 300
+script = ExtResource("1_5l87d")
 
 [node name="BG" parent="." instance=ExtResource("1_8w335")]
 
@@ -18,10 +35,9 @@ position = Vector2(485, 256)
 [node name="Exit" parent="." instance=ExtResource("4_fl67h")]
 position = Vector2(-490, -272)
 
-[node name="CollisionShape2D" parent="Exit" index="1"]
-position = Vector2(-22, 14)
-
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="PhantomCamera2D" type="Node2D" parent="."]
+script = ExtResource("6_djk10")
+tween_resource = SubResource("Resource_1uo33")
 
 [node name="Snowflake" parent="." instance=ExtResource("5_3l6cb")]
 position = Vector2(272, 240)
@@ -44,4 +60,6 @@ position = Vector2(-16, -160)
 [node name="Snowflake7" parent="." instance=ExtResource("5_3l6cb")]
 position = Vector2(-184, -248)
 
-[editable path="Exit"]
+[node name="LevelController" type="Node" parent="." node_paths=PackedStringArray("camera")]
+script = ExtResource("9_p7w1p")
+camera = NodePath("../PhantomCamera2D")
