@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://xv0mt0yr3up8"]
+
+[ext_resource type="Texture2D" uid="uid://cshgoadjlltlk" path="res://art/geometry/square-16-full.png" id="1_mhlph"]
+
+[node name="BG" type="Sprite2D"]
+scale = Vector2(100, 60)
+texture = ExtResource("1_mhlph")

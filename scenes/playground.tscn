@@ -1,0 +1,31 @@
+[gd_scene load_steps=8 format=3 uid="uid://bea51sky55ooc"]
+
+[ext_resource type="PackedScene" uid="uid://xv0mt0yr3up8" path="res://scenes/utils/bg.tscn" id="1_f8j48"]
+[ext_resource type="PackedScene" uid="uid://36gpoloxcjs3" path="res://scenes/entities/darkplane.tscn" id="2_m2hhg"]
+[ext_resource type="PackedScene" uid="uid://c31scdtru5ow2" path="res://scenes/player/player.tscn" id="3_hubow"]
+[ext_resource type="PackedScene" uid="uid://blidk8nuo4ieu" path="res://scenes/entities/exit.tscn" id="3_iaajc"]
+[ext_resource type="PackedScene" uid="uid://cff620nk1se5i" path="res://scenes/utils/world_boundary.tscn" id="4_jl6i5"]
+[ext_resource type="PackedScene" uid="uid://wcwm1dfwfm73" path="res://scenes/entities/darkblaster.tscn" id="6_g4p7d"]
+[ext_resource type="PackedScene" uid="uid://b16wesu5j1lck" path="res://scenes/entities/darkhole.tscn" id="7_iku7l"]
+
+[node name="playground" type="Node2D"]
+
+[node name="BG" parent="." instance=ExtResource("1_f8j48")]
+
+[node name="Darkplane1" parent="." instance=ExtResource("2_m2hhg")]
+
+[node name="Exit" parent="." instance=ExtResource("3_iaajc")]
+position = Vector2(-512, -256)
+
+[node name="Player" parent="." instance=ExtResource("3_hubow")]
+position = Vector2(511, 209)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="WorldBoundary" parent="." instance=ExtResource("4_jl6i5")]
+
+[node name="Darkblaster" parent="." instance=ExtResource("6_g4p7d")]
+position = Vector2(323, -326)
+
+[node name="Darkhole" parent="." instance=ExtResource("7_iku7l")]
+position = Vector2(92.619, -111.198)

@@ -1,0 +1,62 @@
+[gd_scene load_steps=7 format=3 uid="uid://blidk8nuo4ieu"]
+
+[ext_resource type="Texture2D" uid="uid://gnlf5t3hx35j" path="res://art/geometry/cross-square.png" id="1_ysxev"]
+[ext_resource type="Script" path="res://scripts/entities/exit.gd" id="2_db8g4"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3bk6x"]
+radius = 15.0
+
+[sub_resource type="Animation" id="Animation_0rgij"]
+resource_name = "start_blink"
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:self_modulate")
+tracks/0/interp = 0
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45, 0.55, 0.75, 0.85, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Color(0, 0, 0, 1), Color(1, 1, 1, 1), Color(0, 0, 0, 1), Color(1, 1, 1, 1), Color(0, 0, 0, 1), Color(1, 1, 1, 1), Color(0, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_gowp0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_i1wyr"]
+_data = {
+"RESET": SubResource("Animation_gowp0"),
+"start_blink": SubResource("Animation_0rgij")
+}
+
+[node name="Exit" type="Area2D"]
+collision_layer = 32
+collision_mask = 8
+script = ExtResource("2_db8g4")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_ysxev")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_3bk6x")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_i1wyr")
+}
+autoplay = "start_blink"

@@ -1,0 +1,47 @@
+[gd_scene load_steps=6 format=3 uid="uid://cnbr0c618knbl"]
+
+[ext_resource type="PackedScene" uid="uid://xv0mt0yr3up8" path="res://scenes/utils/bg.tscn" id="1_8w335"]
+[ext_resource type="PackedScene" uid="uid://c31scdtru5ow2" path="res://scenes/player/player.tscn" id="2_ce6ly"]
+[ext_resource type="PackedScene" uid="uid://cff620nk1se5i" path="res://scenes/utils/world_boundary.tscn" id="3_gcvjj"]
+[ext_resource type="PackedScene" uid="uid://blidk8nuo4ieu" path="res://scenes/entities/exit.tscn" id="4_fl67h"]
+[ext_resource type="PackedScene" uid="uid://uebox1c8mkfh" path="res://scenes/entities/snowflake.tscn" id="5_3l6cb"]
+
+[node name="Level0" type="Node2D"]
+
+[node name="BG" parent="." instance=ExtResource("1_8w335")]
+
+[node name="Player" parent="." instance=ExtResource("2_ce6ly")]
+position = Vector2(485, 256)
+
+[node name="WorldBoundary" parent="." instance=ExtResource("3_gcvjj")]
+
+[node name="Exit" parent="." instance=ExtResource("4_fl67h")]
+position = Vector2(-490, -272)
+
+[node name="CollisionShape2D" parent="Exit" index="1"]
+position = Vector2(-22, 14)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Snowflake" parent="." instance=ExtResource("5_3l6cb")]
+position = Vector2(272, 240)
+
+[node name="Snowflake2" parent="." instance=ExtResource("5_3l6cb")]
+position = Vector2(56, 224)
+
+[node name="Snowflake3" parent="." instance=ExtResource("5_3l6cb")]
+position = Vector2(-168, 200)
+
+[node name="Snowflake4" parent="." instance=ExtResource("5_3l6cb")]
+position = Vector2(-376, 104)
+
+[node name="Snowflake5" parent="." instance=ExtResource("5_3l6cb")]
+position = Vector2(-168, -32)
+
+[node name="Snowflake6" parent="." instance=ExtResource("5_3l6cb")]
+position = Vector2(-16, -160)
+
+[node name="Snowflake7" parent="." instance=ExtResource("5_3l6cb")]
+position = Vector2(-184, -248)
+
+[editable path="Exit"]

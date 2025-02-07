@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://b16wesu5j1lck"]
+
+[ext_resource type="Texture2D" uid="uid://duhrgmnru7ya5" path="res://art/geometry/circle-inner-point.png" id="1_jhiy0"]
+[ext_resource type="Script" path="res://scripts/entities/darkhole.gd" id="1_mobm7"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hduqw"]
+radius = 16.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vqrku"]
+radius = 135.059
+
+[node name="Darkhole" type="StaticBody2D"]
+script = ExtResource("1_mobm7")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+self_modulate = Color(0, 0, 0, 1)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_jhiy0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_hduqw")
+
+[node name="GravityArea" type="Area2D" parent="."]
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GravityArea"]
+shape = SubResource("CircleShape2D_vqrku")
+debug_color = Color(1.01075e-06, 0.636126, 0.408779, 0.42)

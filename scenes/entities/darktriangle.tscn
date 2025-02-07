@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://cuuom5nmc1avu"]
+
+[ext_resource type="Texture2D" uid="uid://dd4rwobbo7262" path="res://art/geometry/diamond.png" id="1_rncl0"]
+[ext_resource type="Script" path="res://scenes/entities/darktriangle.gd" id="2_d6f8a"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_6skfw"]
+bounce = 0.2
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t6xac"]
+size = Vector2(16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ay7je"]
+size = Vector2(18, 18)
+
+[node name="RigidBody2D" type="RigidBody2D"]
+collision_mask = 10
+mass = 0.1
+physics_material_override = SubResource("PhysicsMaterial_6skfw")
+gravity_scale = 0.0
+script = ExtResource("2_d6f8a")
+
+[node name="Darktriangle" type="Sprite2D" parent="."]
+self_modulate = Color(0, 0, 0, 1)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_rncl0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 0.785398
+shape = SubResource("RectangleShape2D_t6xac")
+
+[node name="Darkzone" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Darkzone"]
+rotation = 0.785398
+shape = SubResource("RectangleShape2D_ay7je")
+debug_color = Color(0.666002, 0.511482, 0, 0.42)
