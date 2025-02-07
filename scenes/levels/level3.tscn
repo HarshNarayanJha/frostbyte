@@ -1,10 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://bqb6hnjydl6o8"]
+[gd_scene load_steps=14 format=3 uid="uid://bqb6hnjydl6o8"]
 
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="1_gjge6"]
 [ext_resource type="PackedScene" uid="uid://xv0mt0yr3up8" path="res://scenes/utils/bg.tscn" id="2_rfl43"]
 [ext_resource type="PackedScene" uid="uid://c31scdtru5ow2" path="res://scenes/player/player.tscn" id="3_vtwv0"]
 [ext_resource type="PackedScene" uid="uid://cff620nk1se5i" path="res://scenes/utils/world_boundary.tscn" id="4_7jlrx"]
 [ext_resource type="PackedScene" uid="uid://blidk8nuo4ieu" path="res://scenes/entities/exit.tscn" id="5_m08sv"]
+[ext_resource type="PackedScene" uid="uid://d1kruxxgvbh5x" path="res://scenes/levels/level4.tscn" id="6_j7u0k"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="6_jr757"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="7_3to4f"]
 [ext_resource type="PackedScene" uid="uid://uebox1c8mkfh" path="res://scenes/entities/snowflake.tscn" id="8_tervn"]
@@ -18,7 +19,7 @@ duration = 1.0
 transition = 0
 ease = 2
 
-[node name="Level0" type="Node2D"]
+[node name="Level3" type="Node2D"]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
@@ -36,6 +37,7 @@ position = Vector2(512, -256)
 
 [node name="Exit" parent="." instance=ExtResource("5_m08sv")]
 position = Vector2(-448, 192)
+next_level_scene = ExtResource("6_j7u0k")
 
 [node name="PhantomCamera2D" type="Node2D" parent="."]
 script = ExtResource("6_jr757")

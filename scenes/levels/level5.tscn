@@ -18,7 +18,7 @@ duration = 1.0
 transition = 0
 ease = 2
 
-[node name="Level0" type="Node2D"]
+[node name="Level5" type="Node2D"]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
