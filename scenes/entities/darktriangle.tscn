@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://cuuom5nmc1avu"]
 
 [ext_resource type="Texture2D" uid="uid://dd4rwobbo7262" path="res://art/geometry/diamond.png" id="1_rncl0"]
-[ext_resource type="Script" path="res://scenes/entities/darktriangle.gd" id="2_d6f8a"]
+[ext_resource type="Script" path="res://scripts/entities/darktriangle.gd" id="2_d6f8a"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_6skfw"]
 bounce = 0.2

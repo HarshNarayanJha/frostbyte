@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://wcwm1dfwfm73"]
 
 [ext_resource type="Texture2D" uid="uid://djag6ql7bqlt8" path="res://art/geometry/double-triangle.png" id="1_e5ejt"]
-[ext_resource type="Script" path="res://scenes/entities/darkblaster.gd" id="1_ur5k6"]
+[ext_resource type="Script" path="res://scripts/entities/darkblaster.gd" id="1_ur5k6"]
 [ext_resource type="PackedScene" uid="uid://cuuom5nmc1avu" path="res://scenes/entities/darktriangle.tscn" id="2_c2bqa"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lhsh2"]
@@ -12,7 +12,7 @@ collision_layer = 5
 collision_mask = 0
 script = ExtResource("1_ur5k6")
 shoot_freq = 0.5
-shoot_strength = 150
+shoot_strength = 20
 darktriangle = ExtResource("2_c2bqa")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

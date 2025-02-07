@@ -76,6 +76,10 @@ shoot={
 2d_physics/layer_5="Lightzone"
 2d_physics/layer_6="Exit"
 
+[physics]
+
+2d/physics_engine="Rapier2D"
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0

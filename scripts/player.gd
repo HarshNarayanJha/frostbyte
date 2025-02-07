@@ -4,7 +4,7 @@ const SPEED := 300.0
 const ACCELERATION := 100.0
 const DECELERATION := 50.0
 
-const GRAVITY_CONSTANT := 2000000.0
+const GRAVITY_CONSTANT := 1000000.0
 
 @onready var sprite_2d: Sprite2D = $Sprite2D
 
