@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cnbr0c618knbl"]
+[gd_scene load_steps=14 format=3 uid="uid://cnbr0c618knbl"]
 
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="1_5l87d"]
 [ext_resource type="PackedScene" uid="uid://xv0mt0yr3up8" path="res://scenes/utils/bg.tscn" id="1_8w335"]
@@ -10,6 +10,8 @@
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="6_djk10"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="7_bl3k2"]
 [ext_resource type="Script" path="res://scripts/level_controller.gd" id="9_p7w1p"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_noise_emitter_2d.gd" id="11_vokgq"]
+[ext_resource type="Resource" uid="uid://2ue83g41ugc5" path="res://scenes/pcam_noise.res" id="12_oby0h"]
 
 [sub_resource type="Resource" id="Resource_1uo33"]
 script = ExtResource("7_bl3k2")
@@ -28,8 +30,9 @@ script = ExtResource("1_5l87d")
 
 [node name="BG" parent="." instance=ExtResource("1_8w335")]
 
-[node name="Player" parent="." instance=ExtResource("2_ce6ly")]
+[node name="Player" parent="." node_paths=PackedStringArray("cam_shake") instance=ExtResource("2_ce6ly")]
 position = Vector2(485, 256)
+cam_shake = NodePath("../PhantomCameraNoiseEmitter2D")
 
 [node name="WorldBoundary" parent="." instance=ExtResource("3_gcvjj")]
 
@@ -40,28 +43,36 @@ next_level_scene = ExtResource("6_41np8")
 [node name="PhantomCamera2D" type="Node2D" parent="."]
 script = ExtResource("6_djk10")
 tween_resource = SubResource("Resource_1uo33")
-
-[node name="Snowflake" parent="." instance=ExtResource("5_3l6cb")]
-position = Vector2(272, 240)
-
-[node name="Snowflake2" parent="." instance=ExtResource("5_3l6cb")]
-position = Vector2(56, 224)
-
-[node name="Snowflake3" parent="." instance=ExtResource("5_3l6cb")]
-position = Vector2(-168, 200)
-
-[node name="Snowflake4" parent="." instance=ExtResource("5_3l6cb")]
-position = Vector2(-376, 104)
-
-[node name="Snowflake5" parent="." instance=ExtResource("5_3l6cb")]
-position = Vector2(-222, -64)
-
-[node name="Snowflake6" parent="." instance=ExtResource("5_3l6cb")]
-position = Vector2(-120, -216)
-
-[node name="Snowflake7" parent="." instance=ExtResource("5_3l6cb")]
-position = Vector2(-280, -264)
+noise_emitter_layer = 1
 
 [node name="LevelController" type="Node" parent="." node_paths=PackedStringArray("camera")]
 script = ExtResource("9_p7w1p")
 camera = NodePath("../PhantomCamera2D")
+
+[node name="PhantomCameraNoiseEmitter2D" type="Node2D" parent="."]
+script = ExtResource("11_vokgq")
+noise = ExtResource("12_oby0h")
+duration = 0.4
+
+[node name="Snowflakes" type="Node" parent="."]
+
+[node name="Snowflake" parent="Snowflakes" instance=ExtResource("5_3l6cb")]
+position = Vector2(272, 240)
+
+[node name="Snowflake2" parent="Snowflakes" instance=ExtResource("5_3l6cb")]
+position = Vector2(56, 224)
+
+[node name="Snowflake3" parent="Snowflakes" instance=ExtResource("5_3l6cb")]
+position = Vector2(-168, 200)
+
+[node name="Snowflake4" parent="Snowflakes" instance=ExtResource("5_3l6cb")]
+position = Vector2(-376, 104)
+
+[node name="Snowflake5" parent="Snowflakes" instance=ExtResource("5_3l6cb")]
+position = Vector2(-222, -64)
+
+[node name="Snowflake6" parent="Snowflakes" instance=ExtResource("5_3l6cb")]
+position = Vector2(-120, -216)
+
+[node name="Snowflake7" parent="Snowflakes" instance=ExtResource("5_3l6cb")]
+position = Vector2(-280, -264)

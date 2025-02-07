@@ -1,7 +1,7 @@
 class_name Player extends CharacterBody2D
 
 const SPEED := 300.0
-const ACCELERATION := 100.0
+const ACCELERATION := 200.0
 const DECELERATION := 50.0
 
 const GRAVITY_CONSTANT := 1000000.0
@@ -10,6 +10,7 @@ const GRAVITY_CONSTANT := 1000000.0
 
 @export var input: InputHandler
 @export var die_fx: PackedScene
+@export var cam_shake: PhantomCameraNoiseEmitter2D
 
 var dark_hole_pos: Vector2 = Vector2.ZERO
 var near_dark_hole: bool = false
@@ -42,6 +43,7 @@ func _physics_process(delta: float) -> void:
 
 func die() -> void:
 	input.disable_inputs()
+	cam_shake.emit()
 	velocity = Vector2.ZERO
 	sprite_2d.hide()
 

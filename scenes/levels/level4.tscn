@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://d1kruxxgvbh5x"]
+[gd_scene load_steps=18 format=3 uid="uid://d1kruxxgvbh5x"]
 
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="1_v63ov"]
 [ext_resource type="PackedScene" uid="uid://xv0mt0yr3up8" path="res://scenes/utils/bg.tscn" id="2_y5sqk"]
@@ -12,6 +12,8 @@
 [ext_resource type="Script" path="res://scripts/level_controller.gd" id="9_ikiwm"]
 [ext_resource type="PackedScene" uid="uid://36gpoloxcjs3" path="res://scenes/entities/darkplane.tscn" id="10_50el8"]
 [ext_resource type="PackedScene" uid="uid://b16wesu5j1lck" path="res://scenes/entities/darkhole.tscn" id="11_nwgre"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_noise_emitter_2d.gd" id="13_s3qgx"]
+[ext_resource type="Resource" uid="uid://2ue83g41ugc5" path="res://scenes/pcam_noise.res" id="14_hqbec"]
 
 [sub_resource type="Resource" id="Resource_1uo33"]
 script = ExtResource("7_hjos8")
@@ -36,8 +38,9 @@ script = ExtResource("1_v63ov")
 
 [node name="BG" parent="." instance=ExtResource("2_y5sqk")]
 
-[node name="Player" parent="." instance=ExtResource("3_u7otn")]
+[node name="Player" parent="." node_paths=PackedStringArray("cam_shake") instance=ExtResource("3_u7otn")]
 position = Vector2(-440, -256)
+cam_shake = NodePath("../PhantomCameraNoiseEmitter2D")
 
 [node name="WorldBoundary" parent="." instance=ExtResource("4_50trm")]
 
@@ -48,69 +51,81 @@ next_level_scene = ExtResource("6_086v5")
 [node name="PhantomCamera2D" type="Node2D" parent="."]
 script = ExtResource("6_gtub5")
 tween_resource = SubResource("Resource_1uo33")
-
-[node name="Snowflake" parent="." instance=ExtResource("8_fp25d")]
-position = Vector2(0, -200)
-
-[node name="Snowflake2" parent="." instance=ExtResource("8_fp25d")]
-position = Vector2(542, 0)
-
-[node name="Snowflake3" parent="." instance=ExtResource("8_fp25d")]
-position = Vector2(360, -96)
-
-[node name="Snowflake4" parent="." instance=ExtResource("8_fp25d")]
-position = Vector2(-352, 224)
-
-[node name="Snowflake5" parent="." instance=ExtResource("8_fp25d")]
-position = Vector2(-480, 96)
+noise_emitter_layer = 1
 
 [node name="LevelController" type="Node" parent="." node_paths=PackedStringArray("camera")]
 script = ExtResource("9_ikiwm")
 camera = NodePath("../PhantomCamera2D")
 
-[node name="Darkplane" parent="." instance=ExtResource("10_50el8")]
+[node name="Snowflakes" type="Node" parent="."]
+
+[node name="Snowflake" parent="Snowflakes" instance=ExtResource("8_fp25d")]
+position = Vector2(0, -200)
+
+[node name="Snowflake2" parent="Snowflakes" instance=ExtResource("8_fp25d")]
+position = Vector2(542, 0)
+
+[node name="Snowflake3" parent="Snowflakes" instance=ExtResource("8_fp25d")]
+position = Vector2(360, -96)
+
+[node name="Snowflake4" parent="Snowflakes" instance=ExtResource("8_fp25d")]
+position = Vector2(-352, 224)
+
+[node name="Snowflake5" parent="Snowflakes" instance=ExtResource("8_fp25d")]
+position = Vector2(-480, 96)
+
+[node name="Snowflake6" parent="Snowflakes" instance=ExtResource("8_fp25d")]
+
+[node name="Darkplanes" type="Node" parent="."]
+
+[node name="Darkplane" parent="Darkplanes" instance=ExtResource("10_50el8")]
 position = Vector2(576, -320)
 scale = Vector2(45, 45)
 offset = Vector2(0, 0)
 rotation_speed = 0.3
 
-[node name="CollisionShape2D" parent="Darkplane/Area2D" index="0"]
+[node name="CollisionShape2D" parent="Darkplanes/Darkplane/Area2D" index="0"]
 position = Vector2(0, 0)
 
-[node name="Darkplane2" parent="." instance=ExtResource("10_50el8")]
+[node name="Darkplane2" parent="Darkplanes" instance=ExtResource("10_50el8")]
 position = Vector2(-576, 320)
 scale = Vector2(30, 30)
 offset = Vector2(0, 0)
 rotation_speed = -0.3
 
-[node name="CollisionShape2D" parent="Darkplane2/Area2D" index="0"]
+[node name="CollisionShape2D" parent="Darkplanes/Darkplane2/Area2D" index="0"]
 position = Vector2(0, 0)
 
-[node name="Darkplane3" parent="." instance=ExtResource("10_50el8")]
+[node name="Darkplane3" parent="Darkplanes" instance=ExtResource("10_50el8")]
 position = Vector2(-576, -320)
 scale = Vector2(10, 10)
 offset = Vector2(0, 0)
 rotation_speed = -0.3
 
-[node name="CollisionShape2D" parent="Darkplane3/Area2D" index="0"]
+[node name="CollisionShape2D" parent="Darkplanes/Darkplane3/Area2D" index="0"]
 position = Vector2(0, 0)
 
-[node name="Darkhole" parent="." instance=ExtResource("11_nwgre")]
+[node name="Darkholes" type="Node" parent="."]
+
+[node name="Darkhole" parent="Darkholes" instance=ExtResource("11_nwgre")]
 position = Vector2(-128, 0)
 
-[node name="CollisionShape2D" parent="Darkhole/GravityArea" index="0"]
+[node name="CollisionShape2D" parent="Darkholes/Darkhole/GravityArea" index="0"]
 shape = SubResource("CircleShape2D_m2xcs")
 
-[node name="Darkhole2" parent="." instance=ExtResource("11_nwgre")]
+[node name="Darkhole2" parent="Darkholes" instance=ExtResource("11_nwgre")]
 position = Vector2(128, 0)
 
-[node name="CollisionShape2D" parent="Darkhole2/GravityArea" index="0"]
+[node name="CollisionShape2D" parent="Darkholes/Darkhole2/GravityArea" index="0"]
 shape = SubResource("CircleShape2D_boyv2")
 
-[node name="Snowflake6" parent="." instance=ExtResource("8_fp25d")]
+[node name="PhantomCameraNoiseEmitter2D" type="Node2D" parent="."]
+script = ExtResource("13_s3qgx")
+noise = ExtResource("14_hqbec")
+duration = 0.4
 
-[editable path="Darkplane"]
-[editable path="Darkplane2"]
-[editable path="Darkplane3"]
-[editable path="Darkhole"]
-[editable path="Darkhole2"]
+[editable path="Darkplanes/Darkplane"]
+[editable path="Darkplanes/Darkplane2"]
+[editable path="Darkplanes/Darkplane3"]
+[editable path="Darkholes/Darkhole"]
+[editable path="Darkholes/Darkhole2"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://k8p7vfawxc2o"]
+[gd_scene load_steps=15 format=3 uid="uid://k8p7vfawxc2o"]
 
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="1_evmdl"]
 [ext_resource type="PackedScene" uid="uid://xv0mt0yr3up8" path="res://scenes/utils/bg.tscn" id="2_k85os"]
@@ -11,6 +11,8 @@
 [ext_resource type="PackedScene" uid="uid://uebox1c8mkfh" path="res://scenes/entities/snowflake.tscn" id="8_nsd55"]
 [ext_resource type="Script" path="res://scripts/level_controller.gd" id="9_vpkjx"]
 [ext_resource type="PackedScene" uid="uid://36gpoloxcjs3" path="res://scenes/entities/darkplane.tscn" id="10_0u5y1"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_noise_emitter_2d.gd" id="12_vmaqy"]
+[ext_resource type="Resource" uid="uid://2ue83g41ugc5" path="res://scenes/pcam_noise.res" id="13_ckckx"]
 
 [sub_resource type="Resource" id="Resource_1uo33"]
 script = ExtResource("7_4wd7v")
@@ -29,8 +31,9 @@ script = ExtResource("1_evmdl")
 
 [node name="BG" parent="." instance=ExtResource("2_k85os")]
 
-[node name="Player" parent="." instance=ExtResource("3_c0gcs")]
+[node name="Player" parent="." node_paths=PackedStringArray("cam_shake") instance=ExtResource("3_c0gcs")]
 position = Vector2(485, 256)
+cam_shake = NodePath("../PhantomCameraNoiseEmitter2D")
 
 [node name="WorldBoundary" parent="." instance=ExtResource("4_o2ebn")]
 
@@ -41,22 +44,25 @@ next_level_scene = ExtResource("6_2pmuf")
 [node name="PhantomCamera2D" type="Node2D" parent="."]
 script = ExtResource("6_85uhw")
 tween_resource = SubResource("Resource_1uo33")
-
-[node name="Snowflake" parent="." instance=ExtResource("8_nsd55")]
-position = Vector2(160, 0)
-
-[node name="Snowflake2" parent="." instance=ExtResource("8_nsd55")]
-position = Vector2(0, 216)
-
-[node name="Snowflake3" parent="." instance=ExtResource("8_nsd55")]
-position = Vector2(-128, -128)
-
-[node name="Snowflake4" parent="." instance=ExtResource("8_nsd55")]
-position = Vector2(-384, 64)
+noise_emitter_layer = 1
 
 [node name="LevelController" type="Node" parent="." node_paths=PackedStringArray("camera")]
 script = ExtResource("9_vpkjx")
 camera = NodePath("../PhantomCamera2D")
+
+[node name="Snowflakes" type="Node" parent="."]
+
+[node name="Snowflake" parent="Snowflakes" instance=ExtResource("8_nsd55")]
+position = Vector2(160, 0)
+
+[node name="Snowflake2" parent="Snowflakes" instance=ExtResource("8_nsd55")]
+position = Vector2(0, 216)
+
+[node name="Snowflake3" parent="Snowflakes" instance=ExtResource("8_nsd55")]
+position = Vector2(-128, -128)
+
+[node name="Snowflake4" parent="Snowflakes" instance=ExtResource("8_nsd55")]
+position = Vector2(-384, 64)
 
 [node name="Darkplane" parent="." instance=ExtResource("10_0u5y1")]
 scale = Vector2(30, 30)
@@ -64,5 +70,10 @@ offset = Vector2(0, 0)
 
 [node name="CollisionShape2D" parent="Darkplane/Area2D" index="0"]
 position = Vector2(0, 0)
+
+[node name="PhantomCameraNoiseEmitter2D" type="Node2D" parent="."]
+script = ExtResource("12_vmaqy")
+noise = ExtResource("13_ckckx")
+duration = 0.4
 
 [editable path="Darkplane"]
