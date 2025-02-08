@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://b7at4c17eeb8k"]
+[gd_scene load_steps=18 format=3 uid="uid://b7at4c17eeb8k"]
 
 [ext_resource type="Texture2D" uid="uid://cshgoadjlltlk" path="res://art/geometry/square-16-full.png" id="1_fwi00"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="2_sk132"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" path="res://scripts/help_credits_controller.gd" id="9_yfy6w"]
 [ext_resource type="FontFile" uid="uid://1awm4bthay3t" path="res://art/fonts/Good-Game.ttf" id="10_6dxtf"]
 [ext_resource type="AudioStream" uid="uid://dbpapxdibmbjc" path="res://audio/music/winter-bells-273217.mp3" id="10_vc8q2"]
+[ext_resource type="PackedScene" uid="uid://b1unidimvrpbx" path="res://scenes/UI/user_stats.tscn" id="13_xj706"]
 
 [sub_resource type="Resource" id="Resource_8hblt"]
 script = ExtResource("4_n7p6h")
@@ -159,3 +160,6 @@ offset_bottom = 328.0
 theme_override_fonts/font = ExtResource("10_6dxtf")
 theme_override_font_sizes/font_size = 28
 text = "Continue >"
+
+[node name="CanvasLayer" parent="." instance=ExtResource("13_xj706")]
+run_timer = false

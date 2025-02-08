@@ -13,7 +13,6 @@ const GRAVITY_CONSTANT := 1000000.0
 @export var cam_shake: PhantomCameraNoiseEmitter2D
 
 @export_group("Audio")
-@export var collision_sfx: AudioStream
 @export var die_sfxs: Array[AudioStream]
 
 var dark_hole_pos: Array[Vector2] = []
@@ -46,8 +45,8 @@ func _physics_process(delta: float) -> void:
 	# Move the character
 	var collision := move_and_slide()
 	if collision:
-		Globals.new_hit()
-		MusicPlayer.play_sfx(collision_sfx, global_position)
+		if not dying:
+			Globals.new_hit()
 		velocity = velocity.bounce(get_last_slide_collision().get_normal())
 
 func die() -> void:

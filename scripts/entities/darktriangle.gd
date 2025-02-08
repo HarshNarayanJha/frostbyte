@@ -12,7 +12,6 @@ func _physics_process(delta: float) -> void:
 	self.apply_torque(500 * delta)
 
 func fire(direction: Vector2, speed: float) -> void:
-	#print("A new dark triangle was fired")
 	var rand_dir = direction.rotated(randf_range(-0.5, 0.5))
 	self.apply_impulse(rand_dir * speed)
 

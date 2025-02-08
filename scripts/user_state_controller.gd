@@ -4,6 +4,9 @@ extends Node
 @export var hits_count: Label
 @export var die_count: Label
 @export var game_timer: Label
+@export var run_timer := true
+
+@onready var counter: Timer = $Counter
 
 var time_elapsed := 0.0
 
@@ -17,12 +20,16 @@ func _ready() -> void:
 	update_dies(Globals.dies)
 
 	time_elapsed = Globals.game_seconds
+	counter.timeout.connect(update_time)
+
+	game_timer.text = _format_seconds(time_elapsed)
 
 
 func _exit_tree() -> void:
 	Globals.snowflake_added.disconnect(update_snowflakes)
 	Globals.wall_hit.disconnect(update_hits)
 	Globals.died.disconnect(update_dies)
+	counter.timeout.disconnect(update_time)
 
 	Globals.game_seconds = time_elapsed
 
@@ -35,8 +42,10 @@ func update_hits(hits: int) -> void:
 func update_dies(dies: int) -> void:
 	die_count.text = str(dies).pad_zeros(2)
 
-func _process(delta : float) -> void:
-	time_elapsed += delta
+func update_time() -> void:
+	if not run_timer:
+		return
+	time_elapsed += 1
 	game_timer.text = _format_seconds(time_elapsed)
 
 func _format_seconds(time : float) -> String:
