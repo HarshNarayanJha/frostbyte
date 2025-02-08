@@ -6,6 +6,8 @@ var snowflakes_this_level: int = 0
 var hits: int = 0
 var dies: int = 0
 
+var game_seconds := 0.0
+
 signal snowflake_added(snowflakes: int)
 
 signal level_changed

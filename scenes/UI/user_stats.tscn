@@ -116,8 +116,9 @@ text = "00:00:00"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="UserStatsController" type="Node" parent="UserStats" node_paths=PackedStringArray("snowflakes_count", "hits_count", "die_count")]
+[node name="UserStatsController" type="Node" parent="UserStats" node_paths=PackedStringArray("snowflakes_count", "hits_count", "die_count", "game_timer")]
 script = ExtResource("4_mq4d5")
 snowflakes_count = NodePath("../Panel/MarginContainer/VBoxContainer/SnowflakesCount/Label")
 hits_count = NodePath("../Panel/MarginContainer/VBoxContainer/HitsCount/Label")
 die_count = NodePath("../Panel/MarginContainer/VBoxContainer/DieCount/Label")
+game_timer = NodePath("../Panel/MarginContainer/VBoxContainer/GameTimer")
