@@ -1,6 +1,7 @@
-[gd_scene load_steps=18 format=3 uid="uid://b7at4c17eeb8k"]
+[gd_scene load_steps=19 format=3 uid="uid://b7at4c17eeb8k"]
 
 [ext_resource type="Texture2D" uid="uid://cshgoadjlltlk" path="res://art/geometry/square-16-full.png" id="1_fwi00"]
+[ext_resource type="Script" path="res://scripts/win_controller.gd" id="1_ho6ox"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="2_sk132"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="3_wupne"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="4_n7p6h"]
@@ -32,7 +33,10 @@ font_size = 77
 font = ExtResource("10_6dxtf")
 font_size = 48
 
-[node name="Win" type="Node2D"]
+[node name="Win" type="Node2D" node_paths=PackedStringArray("win_title", "win_text")]
+script = ExtResource("1_ho6ox")
+win_title = NodePath("Message")
+win_text = NodePath("Message2")
 
 [node name="BG" type="Sprite2D" parent="."]
 self_modulate = Color(0, 0, 0, 1)
