@@ -1,0 +1,161 @@
+[gd_scene load_steps=17 format=3 uid="uid://b7at4c17eeb8k"]
+
+[ext_resource type="Texture2D" uid="uid://cshgoadjlltlk" path="res://art/geometry/square-16-full.png" id="1_fwi00"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="2_sk132"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="3_wupne"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="4_n7p6h"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_noise_emitter_2d.gd" id="5_aynxc"]
+[ext_resource type="Resource" uid="uid://2ue83g41ugc5" path="res://scenes/pcam_noise.res" id="6_4s2ll"]
+[ext_resource type="Texture2D" uid="uid://b5qpmc50xd26d" path="res://art/christmas-tree-41453_1920.png" id="7_7ph58"]
+[ext_resource type="Texture2D" uid="uid://b3vaakfiicfqf" path="res://art/geometry/snowflake.png" id="8_o1l45"]
+[ext_resource type="FontFile" uid="uid://c27s8jtqdu0be" path="res://art/fonts/snow-hooh.regular.ttf" id="9_vpblt"]
+[ext_resource type="Script" path="res://scripts/help_credits_controller.gd" id="9_yfy6w"]
+[ext_resource type="FontFile" uid="uid://1awm4bthay3t" path="res://art/fonts/Good-Game.ttf" id="10_6dxtf"]
+[ext_resource type="AudioStream" uid="uid://dbpapxdibmbjc" path="res://audio/music/winter-bells-273217.mp3" id="10_vc8q2"]
+
+[sub_resource type="Resource" id="Resource_8hblt"]
+script = ExtResource("4_n7p6h")
+duration = 1.0
+transition = 0
+ease = 2
+
+[sub_resource type="Gradient" id="Gradient_0bjw8"]
+interpolation_mode = 2
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="LabelSettings" id="LabelSettings_q4exj"]
+font = ExtResource("9_vpblt")
+font_size = 77
+
+[sub_resource type="LabelSettings" id="LabelSettings_v6n5h"]
+font = ExtResource("10_6dxtf")
+font_size = 48
+
+[node name="Win" type="Node2D"]
+
+[node name="BG" type="Sprite2D" parent="."]
+self_modulate = Color(0, 0, 0, 1)
+scale = Vector2(108, 64)
+texture = ExtResource("1_fwi00")
+region_enabled = true
+region_rect = Rect2(2, 2, 12, 12)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="PhantomCameraHost" type="Node" parent="Camera2D"]
+process_priority = 300
+process_physics_priority = 300
+script = ExtResource("2_sk132")
+
+[node name="PhantomCamera2D" type="Node2D" parent="."]
+script = ExtResource("3_wupne")
+tween_resource = SubResource("Resource_8hblt")
+
+[node name="PhantomCameraNoiseEmitter2D" type="Node2D" parent="."]
+script = ExtResource("5_aynxc")
+noise = ExtResource("6_4s2ll")
+
+[node name="Christmas-tree-414531920" type="Sprite2D" parent="."]
+position = Vector2(-8, -96)
+scale = Vector2(0.205128, 0.205128)
+texture = ExtResource("7_7ph58")
+
+[node name="Sprite2D" type="Sprite2D" parent="Christmas-tree-414531920"]
+position = Vector2(-195, -312)
+texture = ExtResource("8_o1l45")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Christmas-tree-414531920"]
+position = Vector2(234, -195)
+texture = ExtResource("8_o1l45")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Christmas-tree-414531920"]
+position = Vector2(-312, 78)
+texture = ExtResource("8_o1l45")
+
+[node name="Sprite2D4" type="Sprite2D" parent="Christmas-tree-414531920"]
+position = Vector2(390, 273)
+texture = ExtResource("8_o1l45")
+
+[node name="Sprite2D5" type="Sprite2D" parent="Christmas-tree-414531920"]
+position = Vector2(-507, 507)
+texture = ExtResource("8_o1l45")
+
+[node name="Sprite2D6" type="Sprite2D" parent="Christmas-tree-414531920"]
+position = Vector2(-39, 429)
+texture = ExtResource("8_o1l45")
+
+[node name="Sprite2D7" type="Sprite2D" parent="Christmas-tree-414531920"]
+position = Vector2(-1092, 1209)
+texture = ExtResource("8_o1l45")
+
+[node name="Sprite2D8" type="Sprite2D" parent="Christmas-tree-414531920"]
+position = Vector2(1209, 1209)
+texture = ExtResource("8_o1l45")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2(8, -432)
+amount = 32
+lifetime = 30.0
+lifetime_randomness = 1.0
+texture = ExtResource("8_o1l45")
+emission_shape = 3
+emission_rect_extents = Vector2(600, 1)
+direction = Vector2(0, -1)
+spread = 180.0
+gravity = Vector2(0, 20)
+angular_velocity_min = -50.0
+angular_velocity_max = 50.0
+orbit_velocity_max = 0.03
+scale_amount_min = 0.1
+scale_amount_max = 0.2
+color_ramp = SubResource("Gradient_0bjw8")
+
+[node name="Message" type="Label" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -69.0
+offset_top = 128.0
+offset_right = 69.0
+offset_bottom = 203.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Congrats"
+label_settings = SubResource("LabelSettings_q4exj")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Message2" type="Label" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -105.5
+offset_top = 224.0
+offset_right = 105.5
+offset_bottom = 317.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "You saved
+Christmas"
+label_settings = SubResource("LabelSettings_v6n5h")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HelpCreditsController" type="Node" parent="." node_paths=PackedStringArray("back_button")]
+script = ExtResource("9_yfy6w")
+back_button = NodePath("../Button")
+main_menu_path = "res://scenes/credits_scene.tscn"
+scene_music = ExtResource("10_vc8q2")
+
+[node name="Button" type="Button" parent="."]
+offset_left = 424.0
+offset_top = 272.0
+offset_right = 584.0
+offset_bottom = 328.0
+theme_override_fonts/font = ExtResource("10_6dxtf")
+theme_override_font_sizes/font_size = 28
+text = "Continue >"

@@ -61,7 +61,7 @@ snowflake_collect_sfx = SubResource("AudioStreamWAV_vkbvr")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 self_modulate = Color(0, 0, 0, 1)
-scale = Vector2(0.6, 0.6)
+scale = Vector2(0.12, 0.12)
 texture = ExtResource("1_y5q2e")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

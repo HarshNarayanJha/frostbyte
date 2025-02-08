@@ -1,7 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://p6gfoffna54d"]
+[gd_scene load_steps=13 format=3 uid="uid://p6gfoffna54d"]
 
 [ext_resource type="Texture2D" uid="uid://cshgoadjlltlk" path="res://art/geometry/square-16-full.png" id="1_hagve"]
+[ext_resource type="FontFile" uid="uid://c27s8jtqdu0be" path="res://art/fonts/snow-hooh.regular.ttf" id="2_1wahw"]
 [ext_resource type="Texture2D" uid="uid://ck7alrbf8k811" path="res://art/geometry/glow-square.png" id="2_lm12p"]
+[ext_resource type="FontFile" uid="uid://dve7mgsjik4dg" path="res://addons/phantom_camera/fonts/Nunito-Regular.ttf" id="3_eyvnv"]
+[ext_resource type="FontFile" uid="uid://1awm4bthay3t" path="res://art/fonts/Good-Game.ttf" id="3_mn66d"]
 [ext_resource type="Texture2D" uid="uid://b3vaakfiicfqf" path="res://art/geometry/snowflake.png" id="3_u4660"]
 [ext_resource type="Script" path="res://scripts/help_credits_controller.gd" id="4_lvyb8"]
 [ext_resource type="AudioStream" uid="uid://cxp54qqsgpa7f" path="res://audio/music/it39s-going-to-snow-today-12135.mp3" id="5_83q3y"]
@@ -12,9 +15,11 @@ region_rect = Rect2(2, 2, 12, 12)
 modulate_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_fp32s"]
+font = ExtResource("2_1wahw")
 font_size = 72
 
 [sub_resource type="LabelSettings" id="LabelSettings_nadt5"]
+font = ExtResource("3_eyvnv")
 font_size = 18
 
 [sub_resource type="Gradient" id="Gradient_dyi1o"]
@@ -47,7 +52,7 @@ offset_bottom = 164.0
 grow_horizontal = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
-text = "BitCold Help"
+text = "Frostbyte Help"
 label_settings = SubResource("LabelSettings_fp32s")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -65,7 +70,7 @@ offset_right = 582.0
 offset_bottom = 240.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "BitCold is a 1-bit black and white game. There are a total of 6 levels. You are a black ball who just wants to enjoy the christmas.
+text = "Frostbyte is a 1-bit black and white game. There are a total of 6 levels. You are a black ball who just wants to enjoy the christmas.
 But, life.
 You went outside to bring in some snowflakes to decorate your christmas tree, but someone doesn't want you to reach home on time.
 There are a LOT of obstacles along the way home, heck someone even planted a black hole! But know how to beat those.
@@ -77,7 +82,7 @@ WASD or Arrow keys for movement.
 Ground is slippery, you have been warned!
 Avoid all black things at all costs.
 Get out of Black Holes as fast as you can.
-You need to <b>stay in the exit circle</b> for a little bit in order to procceed to the next level. Protect yourself.
+You need to stay in the exit circle for a little bit in order to procceed to the next level. Protect yourself.
 
 Good luck and enjoy the game!"
 label_settings = SubResource("LabelSettings_nadt5")
@@ -111,6 +116,8 @@ offset_right = -72.0
 offset_bottom = -17.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_mn66d")
+theme_override_font_sizes/font_size = 28
 text = "Back to Main Menu"
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="PanelContainer"]
@@ -127,8 +134,8 @@ gravity = Vector2(0, 20)
 angular_velocity_min = -50.0
 angular_velocity_max = 50.0
 orbit_velocity_max = 0.03
-scale_amount_min = 0.4
-scale_amount_max = 0.8
+scale_amount_min = 0.05
+scale_amount_max = 0.1
 color_ramp = SubResource("Gradient_dyi1o")
 
 [node name="CPUParticles2D2" type="CPUParticles2D" parent="PanelContainer"]
@@ -145,8 +152,8 @@ gravity = Vector2(0, 20)
 angular_velocity_min = -50.0
 angular_velocity_max = 50.0
 orbit_velocity_max = 0.03
-scale_amount_min = 0.4
-scale_amount_max = 0.8
+scale_amount_min = 0.05
+scale_amount_max = 0.1
 color_ramp = SubResource("Gradient_dyi1o")
 
 [node name="Camera2D" type="Camera2D" parent="."]

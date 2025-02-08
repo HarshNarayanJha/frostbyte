@@ -1,12 +1,15 @@
-[gd_scene load_steps=13 format=3 uid="uid://bfut468eckhye"]
+[gd_scene load_steps=16 format=3 uid="uid://bfut468eckhye"]
 
 [ext_resource type="Texture2D" uid="uid://cshgoadjlltlk" path="res://art/geometry/square-16-full.png" id="1_wnyip"]
+[ext_resource type="FontFile" uid="uid://c27s8jtqdu0be" path="res://art/fonts/snow-hooh.regular.ttf" id="2_3i1il"]
 [ext_resource type="Texture2D" uid="uid://b3vaakfiicfqf" path="res://art/geometry/snowflake.png" id="3_gvg6m"]
 [ext_resource type="Texture2D" uid="uid://ck7alrbf8k811" path="res://art/geometry/glow-square.png" id="3_tq0ee"]
+[ext_resource type="FontFile" uid="uid://1awm4bthay3t" path="res://art/fonts/Good-Game.ttf" id="4_c3w17"]
 [ext_resource type="Script" path="res://scripts/main_menu_controller.gd" id="4_vb57r"]
 [ext_resource type="PackedScene" uid="uid://cnbr0c618knbl" path="res://scenes/levels/level0.tscn" id="5_dcbkm"]
 [ext_resource type="AudioStream" uid="uid://cxp54qqsgpa7f" path="res://audio/music/it39s-going-to-snow-today-12135.mp3" id="5_vqufu"]
 [ext_resource type="PackedScene" uid="uid://p6gfoffna54d" path="res://scenes/help_scene.tscn" id="6_agahp"]
+[ext_resource type="FontFile" uid="uid://dve7mgsjik4dg" path="res://addons/phantom_camera/fonts/Nunito-Regular.ttf" id="6_nblin"]
 [ext_resource type="PackedScene" uid="uid://3w1fppp3guxs" path="res://scenes/credits_scene.tscn" id="7_xvy5j"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_f1rlk"]
@@ -15,13 +18,15 @@ region_rect = Rect2(2, 2, 12, 12)
 modulate_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_fp32s"]
-font_size = 96
+font = ExtResource("2_3i1il")
+font_size = 124
 
 [sub_resource type="Gradient" id="Gradient_dyi1o"]
 interpolation_mode = 2
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 
 [sub_resource type="LabelSettings" id="LabelSettings_h6qyr"]
+font = ExtResource("6_nblin")
 font_size = 12
 
 [node name="MainMenu" type="Node2D"]
@@ -50,7 +55,7 @@ offset_bottom = 212.0
 grow_horizontal = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
-text = "BitCold"
+text = "Frostbyte"
 label_settings = SubResource("LabelSettings_fp32s")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -84,7 +89,8 @@ offset_right = 72.0
 offset_bottom = 24.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 28
+theme_override_fonts/font = ExtResource("4_c3w17")
+theme_override_font_sizes/font_size = 36
 text = "Play"
 icon = ExtResource("3_gvg6m")
 expand_icon = true
@@ -118,7 +124,8 @@ offset_right = 72.0
 offset_bottom = 24.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 28
+theme_override_fonts/font = ExtResource("4_c3w17")
+theme_override_font_sizes/font_size = 36
 text = "Help"
 expand_icon = true
 
@@ -151,12 +158,13 @@ offset_right = 72.0
 offset_bottom = 24.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 28
+theme_override_fonts/font = ExtResource("4_c3w17")
+theme_override_font_sizes/font_size = 36
 text = "Credits"
 expand_icon = true
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="PanelContainer"]
-position = Vector2(584, -24)
+position = Vector2(585, -24)
 amount = 64
 lifetime = 30.0
 lifetime_randomness = 1.0
@@ -169,8 +177,8 @@ gravity = Vector2(0, 20)
 angular_velocity_min = -50.0
 angular_velocity_max = 50.0
 orbit_velocity_max = 0.03
-scale_amount_min = 0.4
-scale_amount_max = 0.8
+scale_amount_min = 0.05
+scale_amount_max = 0.1
 color_ramp = SubResource("Gradient_dyi1o")
 
 [node name="MyName" type="Label" parent="PanelContainer"]

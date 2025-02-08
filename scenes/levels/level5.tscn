@@ -1,10 +1,11 @@
-[gd_scene load_steps=17 format=3 uid="uid://bof5bmorp3boi"]
+[gd_scene load_steps=18 format=3 uid="uid://bof5bmorp3boi"]
 
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="1_7goy3"]
 [ext_resource type="PackedScene" uid="uid://xv0mt0yr3up8" path="res://scenes/utils/bg.tscn" id="2_2xk07"]
 [ext_resource type="PackedScene" uid="uid://c31scdtru5ow2" path="res://scenes/player/player.tscn" id="3_yl3hn"]
 [ext_resource type="PackedScene" uid="uid://cff620nk1se5i" path="res://scenes/utils/world_boundary.tscn" id="4_fvgwd"]
 [ext_resource type="PackedScene" uid="uid://blidk8nuo4ieu" path="res://scenes/entities/exit.tscn" id="5_vgoj7"]
+[ext_resource type="PackedScene" uid="uid://b7at4c17eeb8k" path="res://scenes/levels/win.tscn" id="6_e6w4e"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="6_xx3k1"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="7_s42mr"]
 [ext_resource type="PackedScene" uid="uid://uebox1c8mkfh" path="res://scenes/entities/snowflake.tscn" id="8_d68jr"]
@@ -41,6 +42,8 @@ cam_shake = NodePath("../PhantomCameraNoiseEmitter2D")
 
 [node name="Exit" parent="." instance=ExtResource("5_vgoj7")]
 position = Vector2(544, 288)
+next_level_scene = ExtResource("6_e6w4e")
+next_transition = "res://art/geometry/snowflake.png"
 
 [node name="PhantomCamera2D" type="Node2D" parent="."]
 script = ExtResource("6_xx3k1")
