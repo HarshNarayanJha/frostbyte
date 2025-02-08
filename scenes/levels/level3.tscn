@@ -35,7 +35,7 @@ script = ExtResource("1_gjge6")
 [node name="BG" parent="." instance=ExtResource("2_rfl43")]
 
 [node name="Player" parent="." node_paths=PackedStringArray("cam_shake") instance=ExtResource("3_vtwv0")]
-position = Vector2(544, -288)
+position = Vector2(360, -296)
 cam_shake = NodePath("../PhantomCameraNoiseEmitter2D")
 
 [node name="WorldBoundary" parent="." instance=ExtResource("4_7jlrx")]

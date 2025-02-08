@@ -43,7 +43,6 @@ cam_shake = NodePath("../PhantomCameraNoiseEmitter2D")
 [node name="Exit" parent="." instance=ExtResource("5_vgoj7")]
 position = Vector2(544, 288)
 next_level_scene = ExtResource("6_e6w4e")
-next_transition = "res://art/geometry/snowflake.png"
 
 [node name="PhantomCamera2D" type="Node2D" parent="."]
 script = ExtResource("6_xx3k1")

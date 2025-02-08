@@ -134,4 +134,4 @@ debug_color = Color(0.513726, 0.423529, 1, 0.419608)
 shape = SubResource("CircleShape2D_clhk8")
 
 [node name="ExitTimer" type="Timer" parent="."]
-wait_time = 3.0
+wait_time = 1.5
