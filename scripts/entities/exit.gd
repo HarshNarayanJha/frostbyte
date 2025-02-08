@@ -7,6 +7,7 @@ class_name Exit extends Area2D
 @export var initial_rotation_speed := 2
 @export var slowdown_speed := 2
 @export var next_level_scene: PackedScene
+@export var level_complete_jingle: AudioStream
 
 var contacts_done := 0
 var rotation_speed := 0.0
@@ -57,6 +58,7 @@ func on_body_exited(body: Node2D) -> void:
 func next_level() -> void:
 	rotation_speed = -200
 	contacts_done = 50
+	MusicPlayer.play_sfx(level_complete_jingle, global_position)
 	SceneManager.change_scene(next_level_scene, {"pattern": "scribbles", "wait_time": 1, "speed": 1})
 	Globals.new_level()
 

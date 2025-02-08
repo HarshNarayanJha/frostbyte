@@ -14,5 +14,5 @@ func _process(delta: float) -> void:
 	self.rotate(rotation_speed * delta)
 
 func on_body_entered(body: Node2D) -> void:
-	if body is Player:
+	if body is Player and not body.dying:
 		(body as Player).die()

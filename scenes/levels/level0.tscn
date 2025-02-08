@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cnbr0c618knbl"]
+[gd_scene load_steps=16 format=3 uid="uid://cnbr0c618knbl"]
 
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="1_5l87d"]
 [ext_resource type="PackedScene" uid="uid://xv0mt0yr3up8" path="res://scenes/utils/bg.tscn" id="1_8w335"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="6_djk10"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="7_bl3k2"]
 [ext_resource type="Script" path="res://scripts/level_controller.gd" id="9_p7w1p"]
+[ext_resource type="AudioStream" uid="uid://dbpapxdibmbjc" path="res://audio/music/winter-bells-273217.mp3" id="10_7min0"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_noise_emitter_2d.gd" id="11_vokgq"]
 [ext_resource type="Resource" uid="uid://2ue83g41ugc5" path="res://scenes/pcam_noise.res" id="12_oby0h"]
 [ext_resource type="PackedScene" uid="uid://b1unidimvrpbx" path="res://scenes/UI/user_stats.tscn" id="13_71v0f"]
@@ -50,6 +51,7 @@ noise_emitter_layer = 1
 [node name="LevelController" type="Node" parent="." node_paths=PackedStringArray("camera")]
 script = ExtResource("9_p7w1p")
 camera = NodePath("../PhantomCamera2D")
+level_music = ExtResource("10_7min0")
 
 [node name="PhantomCameraNoiseEmitter2D" type="Node2D" parent="."]
 script = ExtResource("11_vokgq")

@@ -30,8 +30,9 @@ grow_horizontal = 0
 
 [node name="Panel" type="Panel" parent="UserStats"]
 layout_mode = 0
+offset_left = -80.0
 offset_right = 96.0
-offset_bottom = 136.0
+offset_bottom = 176.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_qpujn")
 
 [node name="MarginContainer" type="MarginContainer" parent="UserStats/Panel"]
@@ -48,6 +49,7 @@ theme_override_constants/margin_bottom = 12
 
 [node name="VBoxContainer" type="VBoxContainer" parent="UserStats/Panel/MarginContainer"]
 layout_mode = 2
+theme_override_constants/separation = 8
 
 [node name="SnowflakesCount" type="HBoxContainer" parent="UserStats/Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -102,6 +104,15 @@ size_flags_horizontal = 3
 text = "10
 "
 label_settings = SubResource("LabelSettings_gxfrq")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="UserStats/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="GameTimer" type="Label" parent="UserStats/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "00:00:00"
 horizontal_alignment = 1
 vertical_alignment = 1
 

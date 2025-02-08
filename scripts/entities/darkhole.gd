@@ -1,7 +1,7 @@
 extends StaticBody2D
 
 @onready var gravity_area: Area2D = $GravityArea
-@export var darkhole_music: AudioStream
+#@export var darkhole_music: AudioStream
 
 var level_music: AudioStream
 
@@ -22,7 +22,7 @@ func try_apply_gravity(body: Node2D) -> void:
 	player.enter_field(global_position)
 
 	level_music = MusicPlayer.current_music
-	MusicPlayer.play_music(darkhole_music)
+	#MusicPlayer.play_music(darkhole_music)
 
 func remove_gravity(body: Node2D) -> void:
 	if body is not Player:
@@ -30,4 +30,4 @@ func remove_gravity(body: Node2D) -> void:
 
 	var player := body as Player
 	player.exit_field(global_position)
-	MusicPlayer.play_music(level_music)
+	#MusicPlayer.play_music(level_music)

@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://blidk8nuo4ieu"]
+[gd_scene load_steps=10 format=3 uid="uid://blidk8nuo4ieu"]
 
 [ext_resource type="Script" path="res://scripts/entities/exit.gd" id="2_db8g4"]
+[ext_resource type="AudioStream" uid="uid://cb0u0bce8xs5y" path="res://audio/sfx/8-Bit Sound Library/Jingle_Achievement_01.wav" id="2_oy2nv"]
 [ext_resource type="Texture2D" uid="uid://hrtran5pgsnw" path="res://art/geometry/dashed-circle.png" id="2_qtsfb"]
 
 [sub_resource type="Animation" id="Animation_gowp0"]
@@ -82,6 +83,7 @@ collision_layer = 32
 collision_mask = 8
 script = ExtResource("2_db8g4")
 contact_areas = [NodePath("TopArea"), NodePath("BottomArea"), NodePath("LeftArea"), NodePath("RightArea")]
+level_complete_jingle = ExtResource("2_oy2nv")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(1.2, 1.2)

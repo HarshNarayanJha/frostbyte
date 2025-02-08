@@ -1,9 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://c31scdtru5ow2"]
+[gd_scene load_steps=10 format=3 uid="uid://c31scdtru5ow2"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_h1jyl"]
 [ext_resource type="Texture2D" uid="uid://cmallnjoe0a2d" path="res://art/geometry/circle64.png" id="2_4s6k7"]
 [ext_resource type="PackedScene" uid="uid://cbc4clt1yrd13" path="res://scenes/player/player_die_fx.tscn" id="2_jbkqo"]
+[ext_resource type="AudioStream" uid="uid://dcg41otj4d2x0" path="res://audio/sfx/IceShatters/LedasLuzta2.ogg" id="3_1l7wf"]
 [ext_resource type="Script" path="res://scripts/input_handler.gd" id="3_iduec"]
+[ext_resource type="AudioStream" uid="uid://balw8riy4yjt2" path="res://audio/sfx/IceShatters/LedasLuzta4.ogg" id="4_ju2x6"]
+[ext_resource type="AudioStream" uid="uid://c36le8tc0wetu" path="res://audio/sfx/IceShatters/LedasLuzta33.ogg" id="6_foix4"]
+[ext_resource type="AudioStream" uid="uid://ditf367p0ki4k" path="res://audio/sfx/IceShatters/LedasLuzta.ogg" id="7_8kt3q"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bvlhk"]
 radius = 24.0
@@ -15,6 +19,7 @@ motion_mode = 1
 script = ExtResource("1_h1jyl")
 input = NodePath("InputHandler")
 die_fx = ExtResource("2_jbkqo")
+die_sfxs = Array[AudioStream]([ExtResource("3_1l7wf"), ExtResource("4_ju2x6"), ExtResource("6_foix4"), ExtResource("7_8kt3q")])
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(0, 0, 0, 1)

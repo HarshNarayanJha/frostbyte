@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://3w1fppp3guxs"]
+[gd_scene load_steps=11 format=3 uid="uid://3w1fppp3guxs"]
 
 [ext_resource type="Texture2D" uid="uid://cshgoadjlltlk" path="res://art/geometry/square-16-full.png" id="1_37y8w"]
 [ext_resource type="Texture2D" uid="uid://ck7alrbf8k811" path="res://art/geometry/glow-square.png" id="2_svwvf"]
 [ext_resource type="Texture2D" uid="uid://b3vaakfiicfqf" path="res://art/geometry/snowflake.png" id="3_vo58b"]
 [ext_resource type="Script" path="res://scripts/help_credits_controller.gd" id="4_lqsd3"]
+[ext_resource type="AudioStream" uid="uid://cxp54qqsgpa7f" path="res://audio/music/it39s-going-to-snow-today-12135.mp3" id="5_rvylc"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_f1rlk"]
 texture = ExtResource("1_37y8w")
@@ -198,3 +199,4 @@ color_ramp = SubResource("Gradient_dyi1o")
 script = ExtResource("4_lqsd3")
 back_button = NodePath("../PanelContainer/BackButton/Button")
 main_menu_path = "res://scenes/main_menu.tscn"
+scene_music = ExtResource("5_rvylc")

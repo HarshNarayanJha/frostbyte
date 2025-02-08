@@ -14,7 +14,7 @@ const GRAVITY_CONSTANT := 1000000.0
 
 @export_group("Audio")
 @export var collision_sfx: AudioStream
-@export var die_sfx: AudioStream
+@export var die_sfxs: Array[AudioStream]
 
 var dark_hole_pos: Array[Vector2] = []
 var near_dark_hole: bool = false
@@ -64,7 +64,7 @@ func die() -> void:
 	var fx: GPUParticles2D = die_fx.instantiate()
 	add_child(fx)
 	fx.emitting = true
-	MusicPlayer.play_sfx(die_sfx, global_position)
+	MusicPlayer.play_sfx(die_sfxs.pick_random(), global_position)
 
 	await fx.finished
 	SceneManager.reload_scene({"pattern": "scribbles", "wait_time": 1, "speed": 5})

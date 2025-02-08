@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://bfut468eckhye"]
+[gd_scene load_steps=13 format=3 uid="uid://bfut468eckhye"]
 
 [ext_resource type="Texture2D" uid="uid://cshgoadjlltlk" path="res://art/geometry/square-16-full.png" id="1_wnyip"]
 [ext_resource type="Texture2D" uid="uid://b3vaakfiicfqf" path="res://art/geometry/snowflake.png" id="3_gvg6m"]
 [ext_resource type="Texture2D" uid="uid://ck7alrbf8k811" path="res://art/geometry/glow-square.png" id="3_tq0ee"]
 [ext_resource type="Script" path="res://scripts/main_menu_controller.gd" id="4_vb57r"]
 [ext_resource type="PackedScene" uid="uid://cnbr0c618knbl" path="res://scenes/levels/level0.tscn" id="5_dcbkm"]
+[ext_resource type="AudioStream" uid="uid://cxp54qqsgpa7f" path="res://audio/music/it39s-going-to-snow-today-12135.mp3" id="5_vqufu"]
 [ext_resource type="PackedScene" uid="uid://p6gfoffna54d" path="res://scenes/help_scene.tscn" id="6_agahp"]
 [ext_resource type="PackedScene" uid="uid://3w1fppp3guxs" path="res://scenes/credits_scene.tscn" id="7_xvy5j"]
 
@@ -194,6 +195,7 @@ vertical_alignment = 1
 
 [node name="MainMenuController" type="Node" parent="." node_paths=PackedStringArray("play_button", "help_button", "credits_button")]
 script = ExtResource("4_vb57r")
+main_music_theme = ExtResource("5_vqufu")
 play_button = NodePath("../PanelContainer/PlayButton/Button")
 help_button = NodePath("../PanelContainer/HelpButton/Button")
 credits_button = NodePath("../PanelContainer/CreditsButton/Button")

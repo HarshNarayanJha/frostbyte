@@ -10,6 +10,9 @@ func _ready() -> void:
 	sfx_player.stop()
 
 func play_music(music: AudioStream) -> void:
+	if music == current_music:
+		return
+
 	var db = music_player.volume_db
 	await get_tree().create_tween().tween_property(music_player, "volume_db", -100, 0.25).finished
 	music_player.stop()

@@ -3,6 +3,9 @@ extends Node
 @export var snowflakes_count: Label
 @export var hits_count: Label
 @export var die_count: Label
+@export var game_timer: Label
+
+@export var timer: Timer
 
 func _ready() -> void:
 	Globals.snowflake_added.connect(update_snowflakes)
@@ -12,6 +15,8 @@ func _ready() -> void:
 	update_snowflakes(Globals.snowflakes)
 	update_hits(Globals.hits)
 	update_dies(Globals.dies)
+
+
 
 func _exit_tree() -> void:
 	Globals.snowflake_added.disconnect(update_snowflakes)

@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://b16wesu5j1lck"]
+[gd_scene load_steps=7 format=3 uid="uid://b16wesu5j1lck"]
 
 [ext_resource type="Texture2D" uid="uid://duhrgmnru7ya5" path="res://art/geometry/circle-inner-point.png" id="1_jhiy0"]
 [ext_resource type="Script" path="res://scripts/entities/darkhole.gd" id="1_mobm7"]
 [ext_resource type="Texture2D" uid="uid://c5f4ajjb1l1r5" path="res://art/geometry/circunference.png" id="3_t7hq5"]
+[ext_resource type="AudioStream" uid="uid://cei1d0ymhh8g5" path="res://audio/music/cloaked-in-mystery-187268.mp3" id="4_7ywt3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hduqw"]
 radius = 16.0
@@ -33,3 +34,9 @@ visible = false
 self_modulate = Color(0, 0, 0, 1)
 scale = Vector2(1.87, 1.87)
 texture = ExtResource("3_t7hq5")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_7ywt3")
+autoplay = true
+max_distance = 140.0
+bus = &"SFX"
