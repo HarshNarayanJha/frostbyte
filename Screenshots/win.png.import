@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dfa1n7dm70udd"
-path="res://.godot/imported/frostbyte.png-b5dee6213f499e7963c1aa8e75a3e71e.ctex"
+uid="uid://qt6uscgfs7o3"
+path="res://.godot/imported/win.png-5ef704df3fed5fe17a17adf6c8d03611.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://frostbyte.png"
-dest_files=["res://.godot/imported/frostbyte.png-b5dee6213f499e7963c1aa8e75a3e71e.ctex"]
+source_file="res://Screenshots/win.png"
+dest_files=["res://.godot/imported/win.png-5ef704df3fed5fe17a17adf6c8d03611.ctex"]
 
 [params]
 
