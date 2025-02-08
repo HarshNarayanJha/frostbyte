@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bof5bmorp3boi"]
+[gd_scene load_steps=16 format=3 uid="uid://bof5bmorp3boi"]
 
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="1_7goy3"]
 [ext_resource type="PackedScene" uid="uid://xv0mt0yr3up8" path="res://scenes/utils/bg.tscn" id="2_2xk07"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://wcwm1dfwfm73" path="res://scenes/entities/darkblaster.tscn" id="11_wio5l"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_noise_emitter_2d.gd" id="12_8as2f"]
 [ext_resource type="Resource" uid="uid://2ue83g41ugc5" path="res://scenes/pcam_noise.res" id="12_bprj8"]
+[ext_resource type="PackedScene" uid="uid://b1unidimvrpbx" path="res://scenes/UI/user_stats.tscn" id="14_hk7vi"]
 
 [sub_resource type="Resource" id="Resource_1uo33"]
 script = ExtResource("7_s42mr")
@@ -32,13 +33,13 @@ script = ExtResource("1_7goy3")
 [node name="BG" parent="." instance=ExtResource("2_2xk07")]
 
 [node name="Player" parent="." node_paths=PackedStringArray("cam_shake") instance=ExtResource("3_yl3hn")]
-position = Vector2(-440, -256)
+position = Vector2(-544, -288)
 cam_shake = NodePath("../PhantomCameraNoiseEmitter2D")
 
 [node name="WorldBoundary" parent="." instance=ExtResource("4_fvgwd")]
 
 [node name="Exit" parent="." instance=ExtResource("5_vgoj7")]
-position = Vector2(448, 192)
+position = Vector2(544, 288)
 
 [node name="PhantomCamera2D" type="Node2D" parent="."]
 script = ExtResource("6_xx3k1")
@@ -55,7 +56,7 @@ camera = NodePath("../PhantomCamera2D")
 position = Vector2(0, -200)
 
 [node name="Snowflake2" parent="Snowflakes" instance=ExtResource("8_d68jr")]
-position = Vector2(542, 0)
+position = Vector2(448, 0)
 
 [node name="Snowflake3" parent="Snowflakes" instance=ExtResource("8_d68jr")]
 position = Vector2(360, -96)
@@ -75,7 +76,7 @@ position = Vector2(-176, -32)
 [node name="Darkplanes" type="Node" parent="."]
 
 [node name="Darkplane" parent="Darkplanes" instance=ExtResource("10_7511b")]
-position = Vector2(856, -3.05176e-05)
+position = Vector2(784, -3.05176e-05)
 rotation = 2.35619
 scale = Vector2(45, 45)
 offset = Vector2(0, 0)
@@ -85,7 +86,7 @@ rotation_speed = 0.1
 position = Vector2(0, 0)
 
 [node name="Darkplane2" parent="Darkplanes" instance=ExtResource("10_7511b")]
-position = Vector2(-809, -3.63798e-12)
+position = Vector2(-800, 3.63798e-12)
 rotation = 2.35619
 scale = Vector2(45, 45)
 offset = Vector2(0, 0)
@@ -97,24 +98,24 @@ position = Vector2(0, 0)
 [node name="Darkblasters" type="Node" parent="."]
 
 [node name="Darkblaster" parent="Darkblasters" instance=ExtResource("11_wio5l")]
-position = Vector2(0, -328)
+position = Vector2(-0.432007, -360)
 shoot_freq = 0.2
 
 [node name="Darkblaster2" parent="Darkblasters" instance=ExtResource("11_wio5l")]
-position = Vector2(320, -328)
+position = Vector2(319.568, -360)
 shoot_freq = 0.2
 
 [node name="Darkblaster3" parent="Darkblasters" instance=ExtResource("11_wio5l")]
-position = Vector2(-319.568, -325.358)
+position = Vector2(-320, -360)
 shoot_freq = 0.2
 
 [node name="Darkblaster4" parent="Darkblasters" instance=ExtResource("11_wio5l")]
-position = Vector2(-192, 328)
+position = Vector2(-192, 360)
 rotation = 3.14159
 shoot_freq = 0.2
 
 [node name="Darkblaster5" parent="Darkblasters" instance=ExtResource("11_wio5l")]
-position = Vector2(202, 326)
+position = Vector2(200, 360)
 rotation = 3.14159
 shoot_freq = 0.2
 
@@ -122,6 +123,8 @@ shoot_freq = 0.2
 script = ExtResource("12_8as2f")
 noise = ExtResource("12_bprj8")
 duration = 0.4
+
+[node name="CanvasLayer" parent="." instance=ExtResource("14_hk7vi")]
 
 [editable path="Darkplanes/Darkplane"]
 [editable path="Darkplanes/Darkplane2"]

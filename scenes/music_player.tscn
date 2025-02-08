@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://dgs7una1aqjnv"]
+
+[ext_resource type="Script" path="res://scripts/music_player.gd" id="1_a2avo"]
+
+[node name="MusicPlayer" type="Node2D" node_paths=PackedStringArray("music_player", "sfx_player")]
+script = ExtResource("1_a2avo")
+music_player = NodePath("BGM")
+sfx_player = NodePath("SFX")
+
+[node name="BGM" type="AudioStreamPlayer" parent="."]
+bus = &"Music"
+
+[node name="SFX" type="AudioStreamPlayer2D" parent="."]
+bus = &"SFX"

@@ -1,0 +1,156 @@
+[gd_scene load_steps=9 format=3 uid="uid://p6gfoffna54d"]
+
+[ext_resource type="Texture2D" uid="uid://cshgoadjlltlk" path="res://art/geometry/square-16-full.png" id="1_hagve"]
+[ext_resource type="Texture2D" uid="uid://ck7alrbf8k811" path="res://art/geometry/glow-square.png" id="2_lm12p"]
+[ext_resource type="Texture2D" uid="uid://b3vaakfiicfqf" path="res://art/geometry/snowflake.png" id="3_u4660"]
+[ext_resource type="Script" path="res://scripts/help_credits_controller.gd" id="4_lvyb8"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_f1rlk"]
+texture = ExtResource("1_hagve")
+region_rect = Rect2(2, 2, 12, 12)
+modulate_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_fp32s"]
+font_size = 72
+
+[sub_resource type="LabelSettings" id="LabelSettings_nadt5"]
+font_size = 18
+
+[sub_resource type="Gradient" id="Gradient_dyi1o"]
+interpolation_mode = 2
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[node name="HelpScene" type="Node2D"]
+
+[node name="PanelContainer" type="Panel" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -640.0
+offset_top = -360.0
+offset_right = 640.0
+offset_bottom = 360.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_f1rlk")
+
+[node name="Title" type="Label" parent="PanelContainer"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -216.0
+offset_top = 32.0
+offset_right = 214.0
+offset_bottom = 164.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+text = "BitCold Help"
+label_settings = SubResource("LabelSettings_fp32s")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HelpText" type="Label" parent="PanelContainer"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -582.0
+offset_top = -192.0
+offset_right = 582.0
+offset_bottom = 240.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "BitCold is a 1-bit black and white game. There are a total of 6 levels. You are a black ball who just wants to enjoy the christmas.
+But, life.
+You went outside to bring in some snowflakes to decorate your christmas tree, but someone doesn't want you to reach home on time.
+There are a LOT of obstacles along the way home, heck someone even planted a black hole! But know how to beat those.
+
+Collect atleast 12 snowflakes and reach home on time.
+
+Controls:
+WASD or Arrow keys for movement.
+Ground is slippery, you have been warned!
+Avoid all black things at all costs.
+Get out of Black Holes as fast as you can.
+You need to <b>stay in the exit circle</b> for a little bit in order to procceed to the next level. Protect yourself.
+
+Good luck and enjoy the game!"
+label_settings = SubResource("LabelSettings_nadt5")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BackButton" type="TextureRect" parent="PanelContainer"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -208.0
+offset_top = -98.0
+offset_right = 208.0
+offset_bottom = -32.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("2_lm12p")
+expand_mode = 1
+
+[node name="Button" type="Button" parent="PanelContainer/BackButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 72.0
+offset_top = 18.0
+offset_right = -72.0
+offset_bottom = -17.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Back to Main Menu"
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="PanelContainer"]
+position = Vector2(72, -24)
+amount = 16
+lifetime = 30.0
+lifetime_randomness = 1.0
+texture = ExtResource("3_u4660")
+emission_shape = 3
+emission_rect_extents = Vector2(60, 1)
+direction = Vector2(0, -1)
+spread = 180.0
+gravity = Vector2(0, 20)
+angular_velocity_min = -50.0
+angular_velocity_max = 50.0
+orbit_velocity_max = 0.03
+scale_amount_min = 0.4
+scale_amount_max = 0.8
+color_ramp = SubResource("Gradient_dyi1o")
+
+[node name="CPUParticles2D2" type="CPUParticles2D" parent="PanelContainer"]
+position = Vector2(1208, -24)
+amount = 16
+lifetime = 30.0
+lifetime_randomness = 1.0
+texture = ExtResource("3_u4660")
+emission_shape = 3
+emission_rect_extents = Vector2(60, 1)
+direction = Vector2(0, -1)
+spread = 180.0
+gravity = Vector2(0, 20)
+angular_velocity_min = -50.0
+angular_velocity_max = 50.0
+orbit_velocity_max = 0.03
+scale_amount_min = 0.4
+scale_amount_max = 0.8
+color_ramp = SubResource("Gradient_dyi1o")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="HelpCreditsController" type="Node" parent="." node_paths=PackedStringArray("back_button")]
+script = ExtResource("4_lvyb8")
+back_button = NodePath("../PanelContainer/BackButton/Button")
+main_menu_path = "res://scenes/main_menu.tscn"

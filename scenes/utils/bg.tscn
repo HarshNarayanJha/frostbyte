@@ -3,5 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://cshgoadjlltlk" path="res://art/geometry/square-16-full.png" id="1_mhlph"]
 
 [node name="BG" type="Sprite2D"]
-scale = Vector2(100, 60)
+scale = Vector2(108, 62)
 texture = ExtResource("1_mhlph")
+region_enabled = true
+region_rect = Rect2(2, 2, 12, 12)

@@ -5,18 +5,18 @@ friction = 0.0
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_c45qa"]
 normal = Vector2(-1, 0)
-distance = -576.0
+distance = -640.0
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_dgv8r"]
 normal = Vector2(1, 0)
-distance = -576.0
+distance = -640.0
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_tddqk"]
 normal = Vector2(0, 1)
-distance = -324.0
+distance = -360.0
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_bl07m"]
-distance = -324.0
+distance = -360.0
 
 [node name="WorldBoundary" type="StaticBody2D"]
 collision_layer = 3

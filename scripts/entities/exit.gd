@@ -58,6 +58,7 @@ func next_level() -> void:
 	rotation_speed = -200
 	contacts_done = 50
 	SceneManager.change_scene(next_level_scene, {"pattern": "scribbles", "wait_time": 1, "speed": 1})
+	Globals.new_level()
 
 func check_player_in_contact(body: Node2D, index: int, entered: bool) -> void:
 	if body is not Player:

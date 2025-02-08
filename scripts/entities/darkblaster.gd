@@ -8,6 +8,8 @@ extends StaticBody2D
 @onready var shoot_timer: Timer = $ShootTimer
 @onready var tip: Marker2D = $Tip
 
+@export var blast_sfx: AudioStream
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	shoot_timer.wait_time = 1 / shoot_freq
@@ -19,12 +21,10 @@ func _ready() -> void:
 func _exit_tree() -> void:
 	shoot_timer.timeout.disconnect(shoot_triangle)
 
-func _process(delta: float) -> void:
-	pass
-
 func shoot_triangle() -> void:
 	await get_tree().create_timer(randf_range(0, 1)).timeout
 	var tri: DarkTriangle = darktriangle.instantiate()
 	add_child(tri)
 	tri.position = tip.position
 	tri.fire(transform.basis_xform(Vector2.DOWN), shoot_strength)
+	MusicPlayer.play_sfx(blast_sfx, global_position)

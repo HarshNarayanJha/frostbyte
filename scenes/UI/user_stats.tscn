@@ -1,0 +1,112 @@
+[gd_scene load_steps=7 format=3 uid="uid://b1unidimvrpbx"]
+
+[ext_resource type="Texture2D" uid="uid://b3vaakfiicfqf" path="res://art/geometry/snowflake.png" id="1_pg2gh"]
+[ext_resource type="Texture2D" uid="uid://gnlf5t3hx35j" path="res://art/geometry/cross-square.png" id="2_wql6y"]
+[ext_resource type="Texture2D" uid="uid://bg4p0quh2hmdt" path="res://art/geometry/xgridwonky.png" id="3_lev23"]
+[ext_resource type="Script" path="res://scripts/user_state_controller.gd" id="4_mq4d5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qpujn"]
+bg_color = Color(0, 0, 0, 0.388235)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="LabelSettings" id="LabelSettings_gxfrq"]
+font_size = 24
+
+[node name="CanvasLayer" type="CanvasLayer"]
+
+[node name="UserStats" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -112.0
+offset_top = 16.0
+offset_right = -112.0
+offset_bottom = 16.0
+grow_horizontal = 0
+
+[node name="Panel" type="Panel" parent="UserStats"]
+layout_mode = 0
+offset_right = 96.0
+offset_bottom = 136.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_qpujn")
+
+[node name="MarginContainer" type="MarginContainer" parent="UserStats/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UserStats/Panel/MarginContainer"]
+layout_mode = 2
+
+[node name="SnowflakesCount" type="HBoxContainer" parent="UserStats/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="TextureRect" type="TextureRect" parent="UserStats/Panel/MarginContainer/VBoxContainer/SnowflakesCount"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("1_pg2gh")
+expand_mode = 2
+
+[node name="Label" type="Label" parent="UserStats/Panel/MarginContainer/VBoxContainer/SnowflakesCount"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "05
+"
+label_settings = SubResource("LabelSettings_gxfrq")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HitsCount" type="HBoxContainer" parent="UserStats/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="TextureRect" type="TextureRect" parent="UserStats/Panel/MarginContainer/VBoxContainer/HitsCount"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("2_wql6y")
+expand_mode = 2
+
+[node name="Label" type="Label" parent="UserStats/Panel/MarginContainer/VBoxContainer/HitsCount"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "10
+"
+label_settings = SubResource("LabelSettings_gxfrq")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DieCount" type="HBoxContainer" parent="UserStats/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="TextureRect" type="TextureRect" parent="UserStats/Panel/MarginContainer/VBoxContainer/DieCount"]
+layout_mode = 2
+texture = ExtResource("3_lev23")
+expand_mode = 2
+
+[node name="Label" type="Label" parent="UserStats/Panel/MarginContainer/VBoxContainer/DieCount"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "10
+"
+label_settings = SubResource("LabelSettings_gxfrq")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="UserStatsController" type="Node" parent="UserStats" node_paths=PackedStringArray("snowflakes_count", "hits_count", "die_count")]
+script = ExtResource("4_mq4d5")
+snowflakes_count = NodePath("../Panel/MarginContainer/VBoxContainer/SnowflakesCount/Label")
+hits_count = NodePath("../Panel/MarginContainer/VBoxContainer/HitsCount/Label")
+die_count = NodePath("../Panel/MarginContainer/VBoxContainer/DieCount/Label")

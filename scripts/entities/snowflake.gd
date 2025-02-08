@@ -10,10 +10,7 @@ func _ready() -> void:
 func _exit_tree() -> void:
 	area_2d.body_entered.disconnect(on_body_entered)
 
-func _process(delta: float) -> void:
-	pass
-
 func on_body_entered(body: Node2D) -> void:
 	if body is Player:
-		print("Point +1")
+		Globals.add_snowflake()
 		queue_free()

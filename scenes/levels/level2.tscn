@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://duy1ur0p0hhb"]
+[gd_scene load_steps=17 format=3 uid="uid://duy1ur0p0hhb"]
 
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="1_hmd5o"]
 [ext_resource type="PackedScene" uid="uid://xv0mt0yr3up8" path="res://scenes/utils/bg.tscn" id="2_f7w8w"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://b16wesu5j1lck" path="res://scenes/entities/darkhole.tscn" id="11_de828"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_noise_emitter_2d.gd" id="12_ctgke"]
 [ext_resource type="Resource" uid="uid://2ue83g41ugc5" path="res://scenes/pcam_noise.res" id="13_ucjkr"]
+[ext_resource type="PackedScene" uid="uid://b1unidimvrpbx" path="res://scenes/UI/user_stats.tscn" id="15_kgyif"]
 
 [sub_resource type="Resource" id="Resource_1uo33"]
 script = ExtResource("7_k5xcn")
@@ -33,13 +34,13 @@ script = ExtResource("1_hmd5o")
 [node name="BG" parent="." instance=ExtResource("2_f7w8w")]
 
 [node name="Player" parent="." node_paths=PackedStringArray("cam_shake") instance=ExtResource("3_lyf8f")]
-position = Vector2(485, 256)
+position = Vector2(544, 288)
 cam_shake = NodePath("../PhantomCameraNoiseEmitter2D")
 
 [node name="WorldBoundary" parent="." instance=ExtResource("4_1lgho")]
 
 [node name="Exit" parent="." instance=ExtResource("5_vp4le")]
-position = Vector2(-512, -256)
+position = Vector2(-560, -280)
 next_level_scene = ExtResource("6_ixdxn")
 
 [node name="PhantomCamera2D" type="Node2D" parent="."]
@@ -113,6 +114,8 @@ position = Vector2(0, 0)
 script = ExtResource("12_ctgke")
 noise = ExtResource("13_ucjkr")
 duration = 0.4
+
+[node name="CanvasLayer" parent="." instance=ExtResource("15_kgyif")]
 
 [editable path="Darkplanes/Darkplane"]
 [editable path="Darkplanes/Darkplane2"]
